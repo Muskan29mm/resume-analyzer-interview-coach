@@ -67,6 +67,7 @@ resume-analyzer-interview-coach/
 ├── docs/
 │   ├── architecture.md
 │   └── Project_journey.md
+    └── React_notes.md
 │
 ├── README.md
 ├── .gitignore
@@ -170,6 +171,7 @@ Additional project documentation is available in the `docs/` directory:
 
 - `architecture.md` – System architecture and design
 - `Project_journey.md` – Development progress and implementation journey
+- `React_notes.md` - Notes of react and it's components
 
 ---
 
