@@ -116,6 +116,38 @@ The backend now supports complete resume upload and text extraction through a RE
 **Status:** ✅ Completed
 
 ---
+# Step 6– React Frontend Initialization
+
+## Objective
+
+Set up the frontend environment using React and Vite to build a modern, responsive user interface for the Resume Analyzer & AI Interview Coach application.
+
+## Implementation
+
+.Finalized React as the frontend framework instead of Streamlit.
+. Upgraded Node.js to the latest compatible version using NVM.
+. Initialized the React project using Vite.
+. Installed project dependencies.
+. Started the React development server.
+. Explored the React project structure.
+. Learned the fundamentals of React:
+      * React
+      * Vite
+      * Components
+      * JSX
+      * Import and Export
+. Created the first reusable components:
+      * Header
+      * Hero
+. Fixed the first React debugging issue related to component exports.
+
+## Outcome
+
+The frontend development environment is successfully configured. The application now has a working React interface and a solid foundation for building the remaining UI.
+
+**Status**: 🚧 In Progress
+
+---
 
 # Current Progress
 
@@ -126,9 +158,9 @@ The backend now supports complete resume upload and text extraction through a RE
 | 3 | Backend Setup | ✅ Completed |
 | 4 | Resume Parsing Module | ✅ Completed |
 | 5 | Resume Upload API | ✅ Completed |
-| 6 | AI Resume Analysis | ⏳ Upcoming |
-| 7 | Interview Question Generator | ⏳ Upcoming |
-| 8 | Streamlit Frontend | ⏳ Upcoming |
+| 6 | React Frontend Initialization | 🚧 In Progress
+| 7 | AI Resume Analysis | ⏳ Upcoming |
+| 8 | Interview Question Generator | ⏳ Upcoming |
 
 ---
 
@@ -139,12 +171,13 @@ The backend now supports complete resume upload and text extraction through a RE
 - Implemented resume parsing for PDF and DOCX files.
 - Developed and tested a resume upload API.
 - Created professional project documentation.
+- Initialized the React frontend using Vite.
 
 ---
 
 # Next Milestone
 
-## Step 6 – AI Resume Analysis
+## Step 7 – AI Resume Analysis
 
 The next phase focuses on integrating the Google Gemini API to transform extracted resume text into meaningful insights.
 

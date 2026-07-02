@@ -45,8 +45,8 @@ The project is designed to help job seekers improve their resumes while preparin
 ### AI (Upcoming)
 - Google Gemini API
 
-### Frontend (Upcoming)
-- Streamlit
+### Frontend (Progress )
+- React
 
 ---
 
@@ -137,16 +137,18 @@ POST /upload
 
 ## Current Progress
 
-| Module | Status |
-|---------|--------|
-| Project Setup | ✅ Completed |
-| Git & GitHub Setup | ✅ Completed |
-| Backend Setup | ✅ Completed |
-| Resume Upload API | ✅ Completed |
-| Resume Text Extraction | ✅ Completed |
-| AI Resume Analysis | ⏳ In Progress |
-| Interview Question Generator | ⏳ Planned |
-| Frontend Development | ⏳ Planned |
+
+| Step | Description | Status |
+|------|-------------|--------|
+| 1 | Project Initialization | ✅ Completed |
+| 2 | GitHub Integration | ✅ Completed |
+| 3 | Backend Setup | ✅ Completed |
+| 4 | Resume Parsing Module | ✅ Completed |
+| 5 | Resume Upload API | ✅ Completed |
+| 6 | React Frontend Initialization | 🚧 In Progress
+| 7 | AI Resume Analysis | ⏳ Upcoming |
+| 8 | Interview Question Generator | ⏳ Upcoming |
+
 
 ---
 

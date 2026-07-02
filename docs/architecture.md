@@ -11,7 +11,7 @@ The Resume Analyzer & AI Interview Coach follows a modular architecture, where e
 ```text
 +----------------------+
 |      Frontend        |
-|     (Streamlit)      |
+|     (React + Vite)      |
 +----------+-----------+
            |
            | HTTP Request
@@ -43,7 +43,7 @@ The Resume Analyzer & AI Interview Coach follows a modular architecture, where e
 
 # Component Description
 
-## 1. Frontend (Streamlit)
+## 1. Frontend (React)
 
 Responsibilities:
 
@@ -115,7 +115,7 @@ Responsibilities:
 
 | Component | Status |
 |-----------|--------|
-| Frontend (Streamlit) | ⏳ Planned |
+| Frontend (React + Vite) | ⏳ Planned |
 | Flask Backend | ✅ Implemented |
 | Resume Upload API | ✅ Implemented |
 | Resume Parser | ✅ Implemented |
