@@ -54,6 +54,24 @@ Responsibilities:
 - Show missing skills
 - Generate interview questions
 
+Frontend Structure:
+
+frontend/
+└── src/
+    ├── assets/
+    ├── components/
+    │   ├── Navbar.jsx
+    │   ├── Navbar.css
+    │   ├── Hero.jsx
+    │   └── Hero.css
+    ├── pages/
+    │   └── Home.jsx
+    ├── styles/
+    │   ├── variables.css
+    │   ├── global.css
+    │   └── utilities.css
+    ├── App.jsx
+    └── main.jsx
 ---
 
 ## 2. Backend (Flask)
@@ -100,7 +118,7 @@ Responsibilities:
 
 ## Data Flow
 
-1. User uploads a resume through the Streamlit interface.
+1. User uploads a resume through the React interface.
 2. The frontend sends the file to the Flask backend.
 3. The backend stores the uploaded file temporarily.
 4. The Resume Parser extracts the text from the document.
@@ -115,10 +133,11 @@ Responsibilities:
 
 | Component | Status |
 |-----------|--------|
-| Frontend (React + Vite) | ⏳ Planned |
+| Frontend (React + Vite) | 🚧 In Progress |
 | Flask Backend | ✅ Implemented |
 | Resume Upload API | ✅ Implemented |
 | Resume Parser | ✅ Implemented |
+| Frontend UI(Navbar) | ✅ Implemented |
 | Gemini AI Integration | ⏳ Planned |
 | Resume Analysis | ⏳ Planned |
 | Interview Question Generator | ⏳ Planned |

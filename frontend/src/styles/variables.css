@@ -1,0 +1,43 @@
+:root {
+
+    /* ==========================
+       Colors
+    ========================== */
+
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+
+    --background-color: #f8fafc;
+    --surface-color: #ffffff;
+
+    --text-color: #1e293b;
+    --text-light: #64748b;
+
+    --border-color: #e2e8f0;
+
+    /* ==========================
+       Typography
+    ========================== */
+
+    --font-family: "Poppins", sans-serif;
+
+    /* ==========================
+       Border Radius
+    ========================== */
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    /* ==========================
+       Shadow
+    ========================== */
+
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* ==========================
+       Layout
+    ========================== */
+
+    --container-width: 1200px;
+}

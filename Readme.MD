@@ -16,6 +16,10 @@ The project is designed to help job seekers improve their resumes while preparin
 - REST API built using Flask
 - Cross-Origin Resource Sharing (CORS) support
 - Resume upload API tested using Postman
+- React + Vite frontend
+- Responsive navigation bar
+- Reusable component architecture
+- Modular CSS architecture
 
 ### 🚧 Planned Features
 
@@ -47,6 +51,9 @@ The project is designed to help job seekers improve their resumes while preparin
 
 ### Frontend (Progress )
 - React
+- Vite
+- HTML5
+- CSS3
 
 ---
 
@@ -63,6 +70,13 @@ resume-analyzer-interview-coach/
 │       └── resume_parser.py
 │
 ├── frontend/
+  └── src/
+    ├── assets/
+    ├── components/
+    ├── pages/
+    ├── styles/
+    ├── App.jsx
+    └── main.jsx
 │
 ├── docs/
 │   ├── architecture.md
@@ -146,9 +160,11 @@ POST /upload
 | 3 | Backend Setup | ✅ Completed |
 | 4 | Resume Parsing Module | ✅ Completed |
 | 5 | Resume Upload API | ✅ Completed |
-| 6 | React Frontend Initialization | 🚧 In Progress
-| 7 | AI Resume Analysis | ⏳ Upcoming |
-| 8 | Interview Question Generator | ⏳ Upcoming |
+| 6 | React Frontend Initialization |✅ Completed |
+| 7	| Frontend Architecture & Navigation | ✅ Completed |
+| 8	| Hero Section | 🚧 In Progress |
+| 9	| AI Resume Analysis| ⏳ Upcoming |
+|10 | Interview Question Generator | ⏳ Upcoming |
 
 
 ---

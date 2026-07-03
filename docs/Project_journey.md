@@ -116,7 +116,7 @@ The backend now supports complete resume upload and text extraction through a RE
 **Status:** ✅ Completed
 
 ---
-# Step 6– React Frontend Initialization
+# Step 6 – React Frontend Initialization
 
 ## Objective
 
@@ -145,9 +145,41 @@ Set up the frontend environment using React and Vite to build a modern, responsi
 
 The frontend development environment is successfully configured. The application now has a working React interface and a solid foundation for building the remaining UI.
 
-**Status**: 🚧 In Progress
+**Status**: ✅ Completed
 
 ---
+# Step 7 – Frontend Architecture & Navigation
+
+## Objective
+
+Establish a scalable frontend architecture and implement the first reusable UI component.
+
+## Implementation
+
+- Reorganized the React project structure.
+- Introduced dedicated folders for:
+  - components
+  - pages
+  - assets
+  - styles
+- Created global styling architecture:
+  - variables.css
+  - global.css
+  - utilities.css
+- Implemented reusable utility classes:
+  - container
+  - button
+- Developed the responsive Navbar component.
+- Applied semantic HTML.
+- Implemented CSS variables for consistent styling.
+- Added sticky navigation.
+- Prepared the project for future responsive enhancements.
+
+## Outcome
+
+The frontend now has a professional and scalable structure that will support future UI development while keeping the codebase clean and maintainable.
+
+**Status:** ✅ Completed
 
 # Current Progress
 
@@ -158,9 +190,12 @@ The frontend development environment is successfully configured. The application
 | 3 | Backend Setup | ✅ Completed |
 | 4 | Resume Parsing Module | ✅ Completed |
 | 5 | Resume Upload API | ✅ Completed |
-| 6 | React Frontend Initialization | 🚧 In Progress
-| 7 | AI Resume Analysis | ⏳ Upcoming |
-| 8 | Interview Question Generator | ⏳ Upcoming |
+| 6 | React Frontend Initialization | ✅ Completed |
+| 7 | Frontend Architecture & Navigation | ✅ Completed |
+| 8 | Hero Section | 🚧 In Progress |
+| 9 | AI Resume Analysis | ⏳ Upcoming |
+| 10 | Interview Question Generator | ⏳ Upcoming  |
+
 
 ---
 
@@ -177,7 +212,7 @@ The frontend development environment is successfully configured. The application
 
 # Next Milestone
 
-## Step 7 – AI Resume Analysis
+## Step 8 – AI Resume Analysis
 
 The next phase focuses on integrating the Google Gemini API to transform extracted resume text into meaningful insights.
 
