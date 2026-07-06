@@ -174,12 +174,20 @@ Establish a scalable frontend architecture and implement the first reusable UI c
 - Implemented CSS variables for consistent styling.
 - Added sticky navigation.
 - Prepared the project for future responsive enhancements.
+- Completed Navbar
+- Completed Hero (v1)
+- Completed reusable SectionTitle
+- Completed Features section
+- Switched to a dark theme
+- Adopted react-icons throughout the project
+- Created global design system (variables.css, global.css, utilities.css)
+- Finalized landing page structure
 
 ## Outcome
 
 The frontend now has a professional and scalable structure that will support future UI development while keeping the codebase clean and maintainable.
 
-**Status:** ✅ Completed
+**Status:** 🚧 In Progress
 
 # Current Progress
 

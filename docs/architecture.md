@@ -60,18 +60,48 @@ frontend/
 └── src/
     ├── assets/
     ├── components/
-    │   ├── Navbar.jsx
-    │   ├── Navbar.css
-    │   ├── Hero.jsx
-    │   └── Hero.css
-    ├── pages/
-    │   └── Home.jsx
-    ├── styles/
-    │   ├── variables.css
-    │   ├── global.css
-    │   └── utilities.css
-    ├── App.jsx
-    └── main.jsx
+    │   ├── Navbar/
+    │   │   ├── Navbar.jsx
+    │   │   └── Navbar.css
+    │   │
+    │   ├── Hero/
+    │   │   ├── Hero.jsx
+    │   │   └── Hero.css
+    │   │
+    │   ├── SectionTitle/
+    │   │   ├── SectionTitle.jsx
+    │   │   └── SectionTitle.css
+    │   │
+    │   ├── Features/
+    │
+
+Landing Page Flow/Structure:
+
+Navbar
+│
+├── Hero
+│
+├── Features
+│
+├── How It Works
+│
+├── Resume Analysis Preview
+│
+├── AI Interview Coach
+│
+├── FAQ
+│
+├── Call To Action
+│
+└── Footer
+
+--------------------------------------------------------------
+📄 ResumeAI
+
+Home    Features    How It Works    FAQ
+
+                        Analyze Resume
+--------------------------------------------------------------
 ---
 
 ## 2. Backend (Flask)

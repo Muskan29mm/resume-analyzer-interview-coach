@@ -130,3 +130,20 @@ HTML tags are lowercase:
 - h1
 - p
 - section
+
+### 10. Props
+
+Pass data from parent to child.
+Props are read-only.
+Improve reusability.
+
+<SectionTitle
+    badge="Features"
+    title="Powerful AI Features"
+    subtitle="Everything you need to optimize your resume."
+/>
+
+Receiving Props:
+function SectionTitle({ badge, title, subtitle }) {
+    ...
+}

@@ -1,43 +1,39 @@
+/* ===========================
+   Colors
+=========================== */
+
 :root {
+    /* Navbar */
+    --navbar-height: 70px;
 
-    /* ==========================
-       Colors
-    ========================== */
+    /* Backgrounds */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
 
-    --primary-color: #2563eb;
-    --primary-dark: #1e40af;
+    /* Text */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
 
-    --background-color: #f8fafc;
-    --surface-color: #ffffff;
+    /* Primary */
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
 
-    --text-color: #1e293b;
-    --text-light: #64748b;
+    /* Status */
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
 
-    --border-color: #e2e8f0;
+    /* Border */
+    --border-color: #334155;
 
-    /* ==========================
-       Typography
-    ========================== */
+    /* Shadow */
+    --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 
-    --font-family: "Poppins", sans-serif;
+    /* Border Radius */
+    --border-radius: 12px;
 
-    /* ==========================
-       Border Radius
-    ========================== */
-
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-
-    /* ==========================
-       Shadow
-    ========================== */
-
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-
-    /* ==========================
-       Layout
-    ========================== */
-
-    --container-width: 1200px;
+    /* Transition */
+    --transition: all 0.3s ease;
 }
