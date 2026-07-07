@@ -18,7 +18,7 @@ function Navbar() {
                     <ul className="nav-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#howitworks">How It Works</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </nav>

@@ -73,35 +73,50 @@ frontend/
     │   │   └── SectionTitle.css
     │   │
     │   ├── Features/
+    │   │   ├── Features.jsx
+    │   │   └── Features.css
+    │   │
+    │   ├── HowItWorks/
+    │   │   ├── HowItWorks.jsx
+    │   │   └── HowItWorks.css
     │
+    ├── pages/
+    ├── styles/
+    ├── App.jsx
+    └── main.jsx
 
 Landing Page Flow/Structure:
 
 Navbar
 │
 ├── Hero
-│
+|
 ├── Features
-│
+|
 ├── How It Works
-│
+|
+├── AI Interview Coach Preview
+|
 ├── Resume Analysis Preview
-│
-├── AI Interview Coach
-│
+|
 ├── FAQ
-│
-├── Call To Action
-│
+|
+├── CTA(Call to action)
+|
 └── Footer
 
---------------------------------------------------------------
-📄 ResumeAI
+------------------------------------------------------------
+                    ResumeAI
 
-Home    Features    How It Works    FAQ
+Home | Features | How It Works | FAQ
 
-                        Analyze Resume
---------------------------------------------------------------
+Analyze Your Resume.
+Ace Every Interview.
+
+[ Analyze Resume ]   [ Try AI Interview Coach ]
+
+------------------------------------------------------------
+
 ---
 
 ## 2. Backend (Flask)
@@ -163,14 +178,17 @@ Responsibilities:
 
 | Component | Status |
 |-----------|--------|
-| Frontend (React + Vite) | 🚧 In Progress |
+| Frontend (React + Vite) | 🚧 Landing Page in Progress |
+| Navbar | ✅ Completed |
+| Hero Section | ✅ Completed |
+| Features Section | ✅ Completed |
+| How It Works Section | ✅ Completed |
 | Flask Backend | ✅ Implemented |
 | Resume Upload API | ✅ Implemented |
 | Resume Parser | ✅ Implemented |
-| Frontend UI(Navbar) | ✅ Implemented |
+| AI Interview Coach Preview | ⏳ Planned |
+| Resume Analysis Preview | ⏳ Planned |
 | Gemini AI Integration | ⏳ Planned |
-| Resume Analysis | ⏳ Planned |
-| Interview Question Generator | ⏳ Planned |
 
 ---
 
@@ -181,5 +199,7 @@ Responsibilities:
 - Downloadable PDF report
 - Job description matching
 - Cover letter generation
+- AI mock interview session
+- AI chat assistant
 - Database integration
 - Cloud deployment
