@@ -1,0 +1,396 @@
+/* ===========================
+   AI Interview Coach Section
+=========================== */
+
+.interview-coach {
+    background: var(--background-color);
+}
+
+.interview-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+/* ===========================
+   Left Side
+=========================== */
+
+.interview-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.feature {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateX(6px);
+    border-color: var(--primary-color);
+}
+
+.feature h4 {
+    margin: 0 0 0.5rem;
+    color: var(--heading-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.feature p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ===========================
+   Application Preview
+=========================== */
+
+.app-preview {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.app-preview:hover {
+    transform: translateY(-8px);
+}
+
+/* ===========================
+   Browser Header
+=========================== */
+
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    padding: 1rem 1.5rem;
+
+    border-bottom: 1px solid var(--border-color);
+
+    background: rgba(255,255,255,0.03);
+}
+
+.window-header p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.dots {
+    position: absolute;
+    left: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+}
+
+/* ===========================
+   Preview Body
+=========================== */
+
+.preview-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===========================
+   Role Card
+=========================== */
+
+.role-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 1.25rem;
+
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 12px;
+}
+
+.role-card span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.role-card strong {
+    color: var(--heading-color);
+}
+
+/* ===========================
+   Question Card
+=========================== */
+
+.question-card {
+    padding: 1.5rem;
+
+    background: rgba(255,255,255,0.02);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 14px;
+}
+
+.question-card small {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.question-card p {
+    margin-top: 0.75rem;
+    color: var(--heading-color);
+    line-height: 1.7;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.answer-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.answer-buttons button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    width:100%;
+
+    padding:14px 18px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#2563eb;
+    color:white;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.answer-buttons button:hover{
+    transform:translateY(-2px);
+    background:#1d4ed8;
+}
+
+/* ===========================
+   Feedback Card
+=========================== */
+
+.feedback-preview {
+
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 16px;
+
+    padding: 1.5rem;
+}
+
+.feedback-preview h4 {
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+}
+
+.feedback-preview ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.feedback-preview li {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   Score
+=========================== */
+
+.preview-score {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 1rem;
+
+    border-top: 1px solid var(--border-color);
+}
+
+.preview-score span {
+    color: var(--text-secondary);
+}
+
+.preview-score strong {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(59, 130, 246, 0.12);
+
+    border-radius: 12px;
+
+    color: var(--primary-color);
+
+    font-size: 1.35rem;
+}
+
+.feature-content h4 {
+    margin: 0 0 0.4rem;
+    color: var(--heading-color);
+    font-size: 1rem;
+}
+
+.feature-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 992px) {
+
+    .interview-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .interview-left {
+        order: 2;
+    }
+
+    .app-preview {
+        order: 1;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .preview-body {
+        padding: 1.5rem;
+    }
+
+    .answer-buttons {
+        flex-direction: column;
+    }
+
+    .role-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+}
+
+/* ===========================
+   AI Feedback Card
+=========================== */
+
+.feedback-preview{
+    margin-top: 24px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 22px;
+}
+
+.feedback-preview h4{
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 18px;
+}
+
+.feedback-preview ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feedback-preview li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #475569;
+    font-size: 15px;
+}
+
+/* ===========================
+   Score Card
+=========================== */
+
+.preview-score{
+    margin-top: 22px;
+    background: linear-gradient(135deg,#2563eb,#4f46e5);
+    border-radius: 16px;
+    color: white;
+    text-align: center;
+    padding: 24px;
+}
+
+.preview-score span{
+    display: block;
+    font-size: 14px;
+    opacity: .9;
+}
+
+.preview-score strong{
+    display: block;
+    font-size: 32px;
+    margin-top: 10px;
+    font-weight: 700;
+}

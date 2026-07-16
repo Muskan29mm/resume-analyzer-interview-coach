@@ -19,7 +19,7 @@ function Navbar() {
                         <li><a href="#home">Home</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#howitworks">How It Works</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#interviewcoach">AI Interview Coach</a></li>
                     </ul>
                 </nav>
 

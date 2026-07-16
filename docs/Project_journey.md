@@ -195,6 +195,37 @@ The frontend now has a professional and scalable structure that will support fut
 
 **Status:** ✅ Completed
 
+# Step 8 – AI Interview Coach Preview
+
+## Objective
+
+Design an interactive preview section that demonstrates the AI Interview Coach feature, allowing users to visualize how AI-powered mock interviews work before using the application.
+
+## Implementation
+
+* Created a dedicated AI Interview Coach section.
+* Added feature highlights showcasing interview capabilities:
+
+  * Personalized interview questions
+  * Instant AI feedback
+  * Performance scoring
+  * Confidence insights
+* Designed a browser-style application preview.
+* Implemented a Role Card displaying the target job role.
+* Added an Interview Question Card.
+* Added Record Answer and Type Answer action buttons.
+* Created an AI Feedback panel with sample interview insights.
+* Displayed an Overall Performance Score.
+* Styled the section using reusable components and responsive CSS.
+* Integrated the section with the Navbar using smooth scrolling.
+
+## Outcome
+
+The landing page now includes an interactive AI Interview Coach preview that clearly demonstrates one of the application's core AI features while maintaining a modern SaaS-inspired user experience.
+
+**Status:** ✅ Completed
+
+
 # Current Progress
 
 | Step | Description | Status |
@@ -206,7 +237,7 @@ The frontend now has a professional and scalable structure that will support fut
 | 5 | Resume Upload API | ✅ Completed |
 | 6 | React Frontend Initialization | ✅ Completed |
 | 7 | Frontend Architecture & Landing Page (Navbar, Hero, Features, How It Works) | ✅ Completed |
-| 8 | AI Interview Coach Preview | 🚧 Next |
+| 8 | AI Interview Coach Preview | ✅ Completed |
 | 9 | Resume Analysis Dashboard Preview | ⏳ Upcoming |
 | 10 | FAQ Section | ⏳ Upcoming |
 | 11 | Call-to-Action Section | ⏳ Upcoming |
@@ -230,18 +261,9 @@ The frontend now has a professional and scalable structure that will support fut
 - Developed the Features section to showcase platform capabilities.
 - Added a responsive How It Works section illustrating the user workflow.
 - Established a reusable frontend design system using CSS variables and shared utility classes.
+- Designed an interactive AI Interview Coach preview section.
+- Implemented browser-style application preview UI.
+- Added AI Feedback and Performance Score components.
+- Integrated AI Interview Coach into Navbar navigation.
 ---
 
-# Next Milestone
-
-## Step 8 – AI Interview Coach Preview
-
-The next phase focuses on designing an engaging preview section for the AI Interview Coach. The objective is to showcase how users can practice interview questions, receive AI-generated feedback, and improve their confidence before real interviews.
-
-This section will include:
-
-- Modern two-column responsive layout
-- AI interview conversation preview
-- Feature highlights
-- Call-to-action button
-- Consistent styling with the existing landing page

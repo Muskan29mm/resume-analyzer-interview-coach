@@ -79,6 +79,10 @@ frontend/
     │   ├── HowItWorks/
     │   │   ├── HowItWorks.jsx
     │   │   └── HowItWorks.css
+    |   |
+    |   ├── InterviewCoach/
+    |   |   ├── InterviewCoach.jsx
+    |   |   ├── InterviewCoach.css
     │
     ├── pages/
     ├── styles/
@@ -186,7 +190,7 @@ Responsibilities:
 | Flask Backend | ✅ Implemented |
 | Resume Upload API | ✅ Implemented |
 | Resume Parser | ✅ Implemented |
-| AI Interview Coach Preview | ⏳ Planned |
+| AI Interview Coach Preview | ✅ Implemented |
 | Resume Analysis Preview | ⏳ Planned |
 | Gemini AI Integration | ⏳ Planned |
 
