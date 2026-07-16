@@ -9,10 +9,9 @@ function Hero() {
             <div className="container hero-container">
 
                 <div className="hero-content">
-                    <h1>Smarter Resume Analysis. Better Interview Preparation.
+                    <h1>Smarter Resume Analysis. Better Interview Preparation.</h1>
                         <br />
-                        Ace Your Next Interview
-                    </h1>
+                        <h1>Ace Your Next Interview</h1>
 
                     <p>
                         Upload your resume and receive an ATS score, detailed feedback, keyword optimization, skill gap analysis, and AI-generated interview questions—all in one place.
@@ -21,7 +20,8 @@ function Hero() {
 
                     <div className="hero-buttons">
                         <h1>Anlayze Resume <HiArrowRight /></h1>
-                        <h1>Learn More<HiPlay /></h1>
+                        <br></br>
+                        <h1>Learn More <HiPlay /></h1>
                     </div>
 
                     <div className="hero-highlights">
@@ -37,9 +37,9 @@ function Hero() {
                     </div>
 
                 </div>
-                <div className="hero-image">
+                {/* <div className="hero-image">
                     Illistartion Here
-                </div>
+                </div> */}
             </div>
         </section>
     );

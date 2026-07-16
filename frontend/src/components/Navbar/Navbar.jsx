@@ -20,6 +20,7 @@ function Navbar() {
                         <li><a href="#features">Features</a></li>
                         <li><a href="#howitworks">How It Works</a></li>
                         <li><a href="#interviewcoach">AI Interview Coach</a></li>
+                        <li><a href="#resume-dashboard">Resume Dashboard</a></li>
                     </ul>
                 </nav>
 
