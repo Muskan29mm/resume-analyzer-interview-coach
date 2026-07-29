@@ -10,28 +10,28 @@ The project is designed to help job seekers improve their resumes while preparin
 
 ### ✅ Current Features
 
-- Upload resumes in PDF format
-- Upload resumes in DOCX format
+- Upload resumes in PDF and DOCX formats
 - Extract text from uploaded resumes
-- REST API built using Flask
+- Compare resumes with a job description
+- Generate Resume Match percentage
+- Identify matching strengths
+- Detect missing skills
+- Generate resume improvement suggestions
+- REST APIs built using Flask
 - Cross-Origin Resource Sharing (CORS) support
-- Resume upload API tested using Postman
 - React + Vite frontend
-- Responsive navigation bar
-- Reusable component architecture
+- Responsive Resume Dashboard
+- Reusable React component architecture
 - Modular CSS architecture
 
 ### 🚧 Planned Features
 
-- AI-powered resume analysis
-- ATS compatibility score
-- Resume strengths and weaknesses
-- Missing skills identification
-- Personalized interview questions
-- Resume improvement suggestions
-- Interactive React frontend
+- AI Interview Question Generator
+- ATS score visualization
 - Resume history
+- Download analysis report (PDF)
 - User authentication
+- Mock interview assistant
 
 ---
 
@@ -68,6 +68,7 @@ resume-analyzer-interview-coach/
 │   ├── uploads/
 │   └── utils/
 │       └── resume_parser.py
+|       └── resume_analyzer.py
 │
 ├── frontend/
   └── src/
@@ -97,6 +98,7 @@ Clone the repository:
 ```bash
 git clone <repository-url>
 ```
+For backend 
 
 Navigate to the backend directory:
 
@@ -121,7 +123,30 @@ The server will start at:
 ```
 http://127.0.0.1:5000
 ```
+For Frontend
 
+Navigate to the frontend directory:
+
+```bash
+cd frontend
+```
+
+Install the dependency
+
+```bash
+npm install
+```
+
+Run the application:
+```bash
+npm run dev
+```
+
+The server will start at:
+
+```
+http://localhost:5173
+```
 ---
 
 ## API Overview
@@ -148,36 +173,66 @@ POST /upload
 }
 ```
 
+### Analyze Resume
+
+**Endpoint**
+
+```
+POST /analyze
+```
+
+**Request**
+
+```json
+{
+    "resume_text": "...",
+    "job_description": "..."
+}
+```
+
+**Sample Response**
+
+```json
+{
+    "resume_match": 85,
+    "strengths": [],
+    "missing_skills": [],
+    "suggestions": []
+}
+```
+
 ---
 
 ## Current Progress
 
 
-| Step | Description | Status |
-|------|-------------|--------|
-| 1 | Project Initialization | ✅ Completed |
-| 2 | GitHub Integration | ✅ Completed |
-| 3 | Backend Setup | ✅ Completed |
-| 4 | Resume Parsing Module | ✅ Completed |
-| 5 | Resume Upload API | ✅ Completed |
-| 6 | React Frontend Initialization |✅ Completed |
-| 7	| Frontend Architecture & Navigation | ✅ Completed |
-| 8	| Hero Section | 🚧 In Progress |
-| 9	| AI Resume Analysis| ⏳ Upcoming |
-|10 | Interview Question Generator | ⏳ Upcoming |
+| Step | Description                          | Status      |
+| ---- | ------------------------------------ | ----------- |
+| 1    | Project Initialization               | ✅ Completed |
+| 2    | GitHub Integration                   | ✅ Completed |
+| 3    | Backend Setup                        | ✅ Completed |
+| 4    | Resume Parsing Module                | ✅ Completed |
+| 5    | Resume Upload API                    | ✅ Completed |
+| 6    | React Frontend Initialization        | ✅ Completed |
+| 7    | Frontend Architecture & Landing Page | ✅ Completed |
+| 8    | AI Interview Coach Preview           | ✅ Completed |
+| 9    | Resume Analysis Dashboard            | ✅ Completed |
+| 10   | AI Resume Analysis Integration       | ✅ Completed |
+| 11   | Call-to-Action Section               | ⏳ Upcoming  |
+| 12   | Footer                               | ⏳ Upcoming  |
+| 13   | Interview Question Generator         | ⏳ Upcoming  |
 
 
 ---
 
 ## Future Enhancements
 
-- Resume scoring
-- ATS optimization
-- Skill gap analysis
-- Cover letter generation
+- AI Interview Question Generator
+- Download analysis report
+- ATS score visualization
+- Resume history
+- User authentication
 - Mock interview assistant
-- Resume dashboard
-- Authentication & user profiles
 
 ---
 
