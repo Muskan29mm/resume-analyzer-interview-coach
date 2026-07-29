@@ -83,7 +83,11 @@ frontend/
     |   ├── InterviewCoach/
     |   |   ├── InterviewCoach.jsx
     |   |   ├── InterviewCoach.css
-    │
+    │   |
+    |   ├── ResumeDashboard/
+    |   |   ├── ResumeDashboard.jsx
+    |   |   ├── ResumeDashboard.css
+    |
     ├── pages/
     ├── styles/
     ├── App.jsx

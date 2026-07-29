@@ -162,3 +162,140 @@
     }
 
 }
+
+/* Resume Upload */
+
+.resume-upload-card{
+    max-width:700px;
+    margin:60px auto 30px;
+    padding:40px;
+    text-align:center;
+    background:var(--card-bg);
+    border:1px solid var(--border-color);
+    border-radius:20px;
+}
+
+.upload-icon{
+    font-size:42px;
+    color:var(--primary-color);
+    margin-bottom:16px;
+}
+
+.resume-upload-card h3{
+    color:var(--heading-color);
+    margin-bottom:10px;
+}
+
+.resume-upload-card p{
+    color:var(--text-color);
+    margin-bottom:20px;
+}
+
+.resume-upload-card input{
+    display:block;
+    margin:20px auto;
+}
+
+.selected-file{
+    font-weight:600;
+}
+
+.upload-button{
+    border:none;
+    padding:12px 28px;
+    border-radius:8px;
+    background:var(--primary-color);
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.upload-button:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+}
+
+.upload-error{
+    color:#ef4444 !important;
+    margin-top:16px;
+}
+
+/* Extracted Resume Text */
+
+.resume-text-card{
+    margin:30px auto;
+    padding:30px;
+    max-width:1000px;
+    background:var(--card-bg);
+    border:1px solid var(--border-color);
+    border-radius:20px;
+}
+
+.resume-text-card h3{
+    color:var(--heading-color);
+    margin-bottom:20px;
+}
+
+.resume-text-card pre{
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    color:var(--text-color);
+    line-height:1.6;
+    max-height:500px;
+    overflow-y:auto;
+}
+
+/* Job Description */
+
+.job-description-card{
+    max-width:1000px;
+    margin:30px auto;
+    padding:30px;
+    background:var(--card-bg);
+    border:1px solid var(--border-color);
+    border-radius:20px;
+}
+
+.job-description-card h3{
+    color:var(--heading-color);
+    margin-bottom:10px;
+}
+
+.job-description-card p{
+    color:var(--text-color);
+    margin-bottom:20px;
+}
+
+.job-description-card textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid var(--border-color);
+    border-radius:12px;
+    background:var(--background-color);
+    color:var(--text-color);
+    font-family:inherit;
+    font-size:15px;
+    line-height:1.6;
+    resize:vertical;
+    outline:none;
+}
+
+.job-description-card textarea:focus{
+    border-color:var(--primary-color);
+}
+
+.analyze-button{
+    margin-top:20px;
+    border:none;
+    padding:12px 28px;
+    border-radius:8px;
+    background:var(--primary-color);
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.analyze-button:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+}

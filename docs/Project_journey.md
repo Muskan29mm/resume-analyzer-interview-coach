@@ -124,22 +124,22 @@ Set up the frontend environment using React and Vite to build a modern, responsi
 
 ## Implementation
 
-.Finalized React as the frontend framework instead of Streamlit.
-. Upgraded Node.js to the latest compatible version using NVM.
-. Initialized the React project using Vite.
-. Installed project dependencies.
-. Started the React development server.
-. Explored the React project structure.
-. Learned the fundamentals of React:
+- Finalized React as the frontend framework instead of Streamlit.
+- Upgraded Node.js to the latest compatible version using NVM.
+- Initialized the React project using Vite.
+- Installed project dependencies.
+- Started the React development server.
+- Explored the React project structure.
+- Learned the fundamentals of React:
       * React
       * Vite
       * Components
       * JSX
       * Import and Export
-. Created the first reusable components:
+- Created the first reusable components:
       * Header
       * Hero
-. Fixed the first React debugging issue related to component exports.
+- Fixed the first React debugging issue related to component exports.
 
 ## Outcome
 
@@ -225,6 +225,84 @@ The landing page now includes an interactive AI Interview Coach preview that cle
 
 **Status:** ✅ Completed
 
+---
+
+# Step 9 – Resume Analysis Dashboard
+
+## Objective
+
+Develop a dedicated Resume Analysis Dashboard where users can upload their resumes, view the extracted resume content, and access resume analysis insights through a structured and user-friendly interface.
+
+## Implementation
+
+- Created a dedicated `ResumeDashboard` page.
+- Implemented resume file upload functionality.
+- Added frontend file validation for:
+  - PDF files
+  - DOCX files
+- Connected the React frontend with the Flask backend upload API.
+- Implemented resume upload using `multipart/form-data`.
+- Integrated the backend Resume Parser module with the dashboard.
+- Displayed the extracted resume text after successful upload.
+- Added a scrollable text area for reviewing the extracted resume content.
+- Created the initial resume analysis interface containing sections for:
+  - ATS Score
+  - Resume Score
+  - Missing Skills
+  - Improvement Suggestions
+- Established the dashboard structure for future dynamic resume analysis.
+
+## Backend Validation Fix
+
+- During implementation, a file extension validation issue was identified in the Flask upload API.
+
+- The backend initially compared extensions without the leading dot:
+
+```python
+allowed_extensions = ['.pdf', '.docx']
+```
+
+## Outcome
+
+The Resume Analysis Dashboard is now connected to the backend resume processing pipeline.
+
+The current workflow is:
+
+Upload Resume → Validate File → Send to Flask API → Parse Resume → Extract Text → Display Extracted Resume Text
+
+The analysis sections are currently present as the initial dashboard interface and will be made dynamic in the next phase using the extracted resume text.
+
+
+**Status:** ✅ Completed
+
+---
+ 
+
+# Step 10 – AI Resume Analysis Integration
+
+## Objective
+
+Integrate the Resume Analysis Dashboard with the backend AI analysis engine to compare an uploaded resume against a job description and generate actionable insights. 
+
+## Implementation
+- Developed the `/analyze` REST API using Flask.
+- Accepted `resume_text` and `job_description` as JSON input.
+- Integrated the Resume Analyzer module with the backend.
+- Implemented resume-to-job-description comparison.
+- Calculated Resume Match percentage.
+- Identified strengths based on matching skills.
+- Detected missing skills required by the job description.
+- Generated personalized improvement suggestions.
+- Connected the React frontend with the Flask `/analyze` API.
+- Displayed analysis results dynamically in the Resume Dashboard.
+- Added backend logging for upload and analysis requests.
+- Validated the complete end-to-end workflow.
+
+## Outcome
+
+The Resume Analyzer now provides dynamic AI-powered feedback by comparing resumes against job descriptions. Users can upload a resume, extract its content, paste a job description, and receive personalized resume insights through an interactive dashboard.
+
+**Status:** ✅ Completed
 
 # Current Progress
 
@@ -238,12 +316,11 @@ The landing page now includes an interactive AI Interview Coach preview that cle
 | 6 | React Frontend Initialization | ✅ Completed |
 | 7 | Frontend Architecture & Landing Page (Navbar, Hero, Features, How It Works) | ✅ Completed |
 | 8 | AI Interview Coach Preview | ✅ Completed |
-| 9 | Resume Analysis Dashboard Preview | ⏳ Upcoming |
-| 10 | FAQ Section | ⏳ Upcoming |
+| 9 | Resume Analysis Dashboard | ✅ Completed |
+| 10 | AI Resume Analysis Integration | ✅ Completed |
 | 11 | Call-to-Action Section | ⏳ Upcoming |
 | 12 | Footer | ⏳ Upcoming |
-| 13 | AI Resume Analysis Integration | ⏳ Upcoming |
-| 14 | Interview Question Generator | ⏳ Upcoming |
+| 13 | Interview Question Generator | ⏳ Upcoming |
 
 ---
 
@@ -265,5 +342,22 @@ The landing page now includes an interactive AI Interview Coach preview that cle
 - Implemented browser-style application preview UI.
 - Added AI Feedback and Performance Score components.
 - Integrated AI Interview Coach into Navbar navigation.
+- Created a dedicated Resume Analysis Dashboard.
+- Implemented PDF and DOCX resume upload functionality.
+- Added frontend file type validation.
+- Connected the React frontend with the Flask resume upload API.
+- Successfully integrated resume parsing with the dashboard.
+- Displayed extracted resume text dynamically after upload.
+- Created the initial analysis interface for ATS score, resume score, skills, missing skills, strengths, and improvement suggestions.
+- Fixed backend file extension validation for PDF and DOCX uploads.
+- Implemented the Resume Analysis API.
+- Connected the React frontend with the Flask analysis endpoint.
+- Compared uploaded resumes with job descriptions.
+- Generated Resume Match scores dynamically.
+- Identified strengths based on matched skills.
+- Detected missing skills from the job description.
+- Generated AI-powered resume improvement suggestions.
+- Validated the complete end-to-end Resume Analyzer workflow.
+- Added backend debugging logs for upload and analysis requests.
 ---
 

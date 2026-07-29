@@ -24,9 +24,19 @@ function Navbar() {
                     </ul>
                 </nav>
 
-                <button className="nav-btn">
+                {/* <button className="nav-btn">
                     Analyze Resume
-                </button>
+                </button> */}
+                <button
+    className="nav-btn"
+    onClick={() => {
+        document
+            .getElementById("resume-dashboard")
+            .scrollIntoView({ behavior: "smooth" });
+    }}
+>
+    Analyze Resume
+</button>
 
             </div>
         </header>
