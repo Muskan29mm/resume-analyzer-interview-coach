@@ -299,3 +299,63 @@
     opacity:0.6;
     cursor:not-allowed;
 }
+
+/* =========================
+   ATS SCORE BREAKDOWN
+   ========================= */
+
+.ats-card {
+    height: auto;
+}
+
+.ats-breakdown {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #27344d;
+}
+
+.ats-breakdown h4 {
+    margin: 0 0 14px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.breakdown-item {
+    margin-bottom: 14px;
+}
+
+.breakdown-item:last-child {
+    margin-bottom: 0;
+}
+
+.breakdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.breakdown-header span:first-child {
+    color: #d7dce5;
+}
+
+.breakdown-header span:last-child {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.breakdown-bar {
+    width: 100%;
+    height: 7px;
+    background: #27344d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.breakdown-fill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}

@@ -270,8 +270,7 @@ The current workflow is:
 
 Upload Resume → Validate File → Send to Flask API → Parse Resume → Extract Text → Display Extracted Resume Text
 
-The analysis sections are currently present as the initial dashboard interface and will be made dynamic in the next phase using the extracted resume text.
-
+The Resume Analysis Dashboard is now connected to the backend analysis pipeline, and the analysis results are dynamically displayed based on the uploaded resume and provided job description.
 
 **Status:** ✅ Completed
 
@@ -282,25 +281,66 @@ The analysis sections are currently present as the initial dashboard interface a
 
 ## Objective
 
-Integrate the Resume Analysis Dashboard with the backend AI analysis engine to compare an uploaded resume against a job description and generate actionable insights. 
+Integrate the Resume Analysis Dashboard with the backend resume analysis engine to compare an uploaded resume against a job description and generate actionable resume insights.
 
 ## Implementation
+
 - Developed the `/analyze` REST API using Flask.
 - Accepted `resume_text` and `job_description` as JSON input.
 - Integrated the Resume Analyzer module with the backend.
-- Implemented resume-to-job-description comparison.
-- Calculated Resume Match percentage.
-- Identified strengths based on matching skills.
+- Implemented resume-to-job-description skill comparison.
+- Created an initial skill directory for common technical skills.
+- Extracted skills from both resumes and job descriptions using regex-based matching.
+- Calculated Resume Match percentage based on matched job-description skills.
+- Identified matched skills.
 - Detected missing skills required by the job description.
-- Generated personalized improvement suggestions.
+- Implemented ATS Score calculation.
+- Calculated ATS Score using:
+  - Skill Match – 70 points
+  - Email Presence – 15 points
+  - Phone Presence – 15 points
+- Added ATS score classification:
+  - Excellent
+  - Good
+  - Average
+  - Poor
+- Added dynamic resume improvement suggestions based on ATS score, missing skills, and resume sections.
 - Connected the React frontend with the Flask `/analyze` API.
 - Displayed analysis results dynamically in the Resume Dashboard.
 - Added backend logging for upload and analysis requests.
-- Validated the complete end-to-end workflow.
+- Tested the `/analyze` endpoint with multiple resumes and job descriptions.
+- Validated the complete end-to-end resume analysis workflow.
 
 ## Outcome
 
-The Resume Analyzer now provides dynamic AI-powered feedback by comparing resumes against job descriptions. Users can upload a resume, extract its content, paste a job description, and receive personalized resume insights through an interactive dashboard.
+The Resume Analyzer can now compare an uploaded resume with a target job description and dynamically generate Resume Match, matched skills, missing skills, ATS Score, and personalized improvement suggestions.
+
+**Status:** ✅ Completed
+
+---
+
+# Step 11 – ATS Score Breakdown
+
+## Objective
+
+Provide users with a transparent breakdown of the ATS Score so they can understand how their overall score is calculated.
+
+## Implementation
+
+- Added individual ATS scoring components to the backend response.
+- Implemented Skill Match score out of 70 points.
+- Implemented Email score out of 15 points.
+- Implemented Phone score out of 15 points.
+- Added an `ats_breakdown` object to the `/analyze` API response.
+- Connected the ATS breakdown data with the React dashboard.
+- Displayed individual scoring components inside the ATS Score card.
+- Added progress bars for each ATS scoring component.
+- Updated dashboard CSS to support the expanded ATS Score card.
+- Tested the ATS breakdown using different resume analysis results.
+
+## Outcome
+
+Users can now understand how their ATS Score is calculated instead of seeing only the final percentage. The dashboard displays the contribution of Skill Match, Email, and Phone scores separately.
 
 **Status:** ✅ Completed
 
@@ -314,13 +354,18 @@ The Resume Analyzer now provides dynamic AI-powered feedback by comparing resume
 | 4 | Resume Parsing Module | ✅ Completed |
 | 5 | Resume Upload API | ✅ Completed |
 | 6 | React Frontend Initialization | ✅ Completed |
-| 7 | Frontend Architecture & Landing Page (Navbar, Hero, Features, How It Works) | ✅ Completed |
+| 7 | Frontend Architecture & Landing Page | ✅ Completed |
 | 8 | AI Interview Coach Preview | ✅ Completed |
 | 9 | Resume Analysis Dashboard | ✅ Completed |
 | 10 | AI Resume Analysis Integration | ✅ Completed |
-| 11 | Call-to-Action Section | ⏳ Upcoming |
-| 12 | Footer | ⏳ Upcoming |
-| 13 | Interview Question Generator | ⏳ Upcoming |
+| 11 | ATS Score Breakdown | ✅ Completed |
+| 12 | Resume Strengths & Weaknesses | ⏳ Upcoming |
+| 13 | Resume Improvement Suggestions Enhancement | ⏳ Upcoming |
+| 14 | Interview Question Generator | ⏳ Upcoming |
+| 15 | AI Mock Interview | ⏳ Upcoming |
+| 16 | Interview Feedback & Scoring | ⏳ Upcoming |
+| 17 | Analysis History & Saved Results | ⏳ Upcoming |
+| 18 | Authentication | ⏳ Upcoming |
 
 ---
 
@@ -359,5 +404,17 @@ The Resume Analyzer now provides dynamic AI-powered feedback by comparing resume
 - Generated AI-powered resume improvement suggestions.
 - Validated the complete end-to-end Resume Analyzer workflow.
 - Added backend debugging logs for upload and analysis requests.
+- Implemented rule-based resume skill extraction.
+- Implemented job-description skill extraction.
+- Generated dynamic Resume Match scores.
+- Generated dynamic ATS Scores.
+- Implemented ATS scoring using Skill Match, Email, and Phone components.
+- Added ATS Score classification based on score ranges.
+- Added dynamic missing skill detection.
+- Added personalized resume improvement suggestions.
+- Added ATS Score Breakdown to the Resume Dashboard.
+- Added visual progress bars for ATS scoring components.
+- Tested the Resume Analyzer with multiple resumes and job descriptions.
+- Validated the complete Resume Upload → Resume Parsing → Job Description → Analysis → Dashboard workflow.
 ---
 

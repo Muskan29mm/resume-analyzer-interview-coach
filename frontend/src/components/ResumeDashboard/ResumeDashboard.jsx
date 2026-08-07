@@ -259,6 +259,60 @@ function ResumeDashboard() {
                                 : "Excellent ATS Compatibility"}
                         </p>
 
+                        {analysis?.ats_breakdown && (
+    <div className="ats-breakdown">
+        <h4>ATS Score Breakdown</h4>
+
+        <div className="breakdown-item">
+            <div className="breakdown-header">
+                <span>Skill Match</span>
+                <span>{analysis.ats_breakdown.skill_match_score} / 70</span>
+            </div>
+
+            <div className="breakdown-bar">
+                <div
+                    className="breakdown-fill"
+                    style={{
+                        width: `${(analysis.ats_breakdown.skill_match_score / 70) * 100}%`
+                    }}
+                ></div>
+            </div>
+        </div>
+
+        <div className="breakdown-item">
+            <div className="breakdown-header">
+                <span>Email</span>
+                <span>{analysis.ats_breakdown.email_score} / 15</span>
+            </div>
+
+            <div className="breakdown-bar">
+                <div
+                    className="breakdown-fill"
+                    style={{
+                        width: `${(analysis.ats_breakdown.email_score / 15) * 100}%`
+                    }}
+                ></div>
+            </div>
+        </div>
+
+        <div className="breakdown-item">
+            <div className="breakdown-header">
+                <span>Phone</span>
+                <span>{analysis.ats_breakdown.phone_score} / 15</span>
+            </div>
+
+            <div className="breakdown-bar">
+                <div
+                    className="breakdown-fill"
+                    style={{
+                        width: `${(analysis.ats_breakdown.phone_score / 15) * 100}%`
+                    }}
+                ></div>
+            </div>
+        </div>
+    </div>
+)}
+
                     </div>
 
 

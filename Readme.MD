@@ -11,12 +11,20 @@ The project is designed to help job seekers improve their resumes while preparin
 ### ✅ Current Features
 
 - Upload resumes in PDF and DOCX formats
-- Extract text from uploaded resumes
+- Automatic resume text extraction
 - Compare resumes with a job description
-- Generate Resume Match percentage
-- Identify matching strengths
-- Detect missing skills
-- Generate resume improvement suggestions
+- Technical skill extraction
+- Resume-to-job skill matching
+- Resume Match percentage
+- Matched skills identification
+- Missing skills detection
+- Dynamic ATS Score
+- ATS Score Breakdown
+  - Skill Match – 70 points
+  - Email Presence – 15 points
+  - Phone Presence – 15 points
+- ATS compatibility classification
+- Personalized resume improvement suggestions
 - REST APIs built using Flask
 - Cross-Origin Resource Sharing (CORS) support
 - React + Vite frontend
@@ -27,7 +35,6 @@ The project is designed to help job seekers improve their resumes while preparin
 ### 🚧 Planned Features
 
 - AI Interview Question Generator
-- ATS score visualization
 - Resume history
 - Download analysis report (PDF)
 - User authentication
@@ -52,6 +59,8 @@ The project is designed to help job seekers improve their resumes while preparin
 ### Frontend (Progress )
 - React
 - Vite
+- Javascript
+- React Icons
 - HTML5
 - CSS3
 
@@ -194,10 +203,35 @@ POST /analyze
 
 ```json
 {
-    "resume_match": 85,
-    "strengths": [],
-    "missing_skills": [],
-    "suggestions": []
+    "ats_score": 80,
+    "ats_breakdown": {
+        "skill_match_score": 50,
+        "email_score": 15,
+        "phone_score": 15
+    },
+    "resume_match": 71,
+    "matched_skills": [
+        "Python",
+        "Tensorflow",
+        "Pytorch",
+        "Nlp",
+        "Aws"
+    ],
+    "missing_skills": [
+        "Docker",
+        "Kubernetes"
+    ],
+    "resume_skills": [
+        "Python",
+        "Sql",
+        "Machine Learning",
+        "Tensorflow",
+        "Pytorch"
+    ],
+    "suggestions": [
+        "Your resume has a good ATS score, but adding more relevant keywords can improve it.",
+        "Add these relevant skills if you have experience: Docker, Kubernetes"
+    ]
 }
 ```
 
@@ -206,33 +240,44 @@ POST /analyze
 ## Current Progress
 
 
-| Step | Description                          | Status      |
-| ---- | ------------------------------------ | ----------- |
-| 1    | Project Initialization               | ✅ Completed |
-| 2    | GitHub Integration                   | ✅ Completed |
-| 3    | Backend Setup                        | ✅ Completed |
-| 4    | Resume Parsing Module                | ✅ Completed |
-| 5    | Resume Upload API                    | ✅ Completed |
-| 6    | React Frontend Initialization        | ✅ Completed |
-| 7    | Frontend Architecture & Landing Page | ✅ Completed |
-| 8    | AI Interview Coach Preview           | ✅ Completed |
-| 9    | Resume Analysis Dashboard            | ✅ Completed |
-| 10   | AI Resume Analysis Integration       | ✅ Completed |
-| 11   | Call-to-Action Section               | ⏳ Upcoming  |
-| 12   | Footer                               | ⏳ Upcoming  |
-| 13   | Interview Question Generator         | ⏳ Upcoming  |
+## Current Progress
+
+| Step | Description                             | Status       |
+| ---- | -----------                             | -----------  |
+| 1    | Project Initialization                  | ✅ Completed |
+| 2    | GitHub Integration                      | ✅ Completed |
+| 3    | Backend Setup                           | ✅ Completed |
+| 4    | Resume Parsing Module                   | ✅ Completed |
+| 5    | Resume Upload API                       | ✅ Completed |
+| 6    | React Frontend Initialization           | ✅ Completed |
+| 7    | Frontend Architecture & Landing Page    | ✅ Completed |
+| 8    | AI Interview Coach Preview              | ✅ Completed |
+| 9    | Resume Analysis Dashboard               | ✅ Completed |
+| 10   | AI Resume Analysis Integration          | ✅ Completed |
+| 11   | ATS Score Breakdown                     | ✅ Completed |
+| 12   | Resume Strengths & Weaknesses           | ⏳ Upcoming  |
+| 13   | Enhanced Resume Improvement Suggestions | ⏳ Upcoming  |
+| 14   | AI Interview Question Generator         | ⏳ Upcoming  |
+| 15   | AI Mock Interview                       | ⏳ Upcoming  |
+| 16   | Interview Feedback & Scoring            | ⏳ Upcoming  |
+| 17   | Resume Analysis History                 | ⏳ Upcoming  |
+| 18   | User Authentication                     | ⏳ Upcoming  |
+| 19   | Download Analysis Report                | ⏳ Upcoming  |
 
 
 ---
 
 ## Future Enhancements
 
+- Resume strengths and weaknesses analysis
+- Enhanced resume improvement recommendations
 - AI Interview Question Generator
-- Download analysis report
-- ATS score visualization
-- Resume history
+- AI-powered mock interview assistant
+- Interview feedback and scoring
+- Resume analysis history
 - User authentication
-- Mock interview assistant
+- Download analysis report as PDF
+- Google Gemini API integration
 
 ---
 
