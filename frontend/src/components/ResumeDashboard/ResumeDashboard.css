@@ -2,32 +2,52 @@
     background: var(--background-color);
 }
 
-.dashboard-preview{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:24px;
-    margin-top:60px;
+.dashboard-preview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+    align-items: start;
 }
 
-.dashboard-card{
-    background:var(--card-bg);
-    border:1px solid var(--border-color);
-    border-radius:20px;
-    padding:28px;
-    transition:0.3s ease;
+.dashboard-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px;
+    transition: 0.3s ease;
+    min-width: 0;
 }
 
-.dashboard-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 45px rgba(0,0,0,0.08);
+.dashboard-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.08);
 }
 
-.missing-skills{
+/* Missing Skills */
+.missing-skills {
+    grid-column: auto;
+    max-width: none;
+    width: auto;
+    justify-self: stretch;
+}
+.missing-skills ul li {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+
+/* Strengths & Weaknesses */
+.strengths-card,
+.weaknesses-card {
+    height: 100%;
+}
+
+/* Full width cards */
+.full-width {
     grid-column: 1 / -1;
-    max-width: 500px;
-    width: 100%;
-    justify-self: center;
 }
+
 
 .card-header{
     display:flex;
@@ -63,10 +83,21 @@
     margin:0;
 }
 
-.dashboard-card ul li{
-    padding:10px 0;
-    color:var(--text-color);
-    border-bottom:1px solid rgba(255,255,255,0.08);
+.dashboard-card ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    line-height: 1.5;
+}
+
+.dashboard-card ul li svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--primary-color);
+    font-size: 17px;
 }
 
 .dashboard-card ul li:last-child{
@@ -143,24 +174,29 @@
 }
 
 /* Responsive Design */
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-    .dashboard-preview{
-        grid-template-columns:1fr;
+    .dashboard-preview {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    .full-width{
-        grid-column:auto;
+    .full-width {
+        grid-column: auto;
     }
 
-    .dashboard-card{
-        padding:22px;
+    .dashboard-card {
+        padding: 22px;
     }
 
-    .dashboard-card h2{
-        font-size:34px;
+    .dashboard-card h2 {
+        font-size: 34px;
     }
 
+    .strengths-card,
+    .weaknesses-card {
+        height: auto;
+    }
 }
 
 /* Resume Upload */

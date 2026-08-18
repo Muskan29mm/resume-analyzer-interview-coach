@@ -56,3 +56,6 @@ coverage.xml
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+# Uploaded resume files
+backend/uploads/*

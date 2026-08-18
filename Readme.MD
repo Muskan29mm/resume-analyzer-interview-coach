@@ -23,6 +23,7 @@ The project is designed to help job seekers improve their resumes while preparin
   - Skill Match – 70 points
   - Email Presence – 15 points
   - Phone Presence – 15 points
+- Resume Strengths and Weaknesses Analysis
 - ATS compatibility classification
 - Personalized resume improvement suggestions
 - REST APIs built using Flask
@@ -56,7 +57,7 @@ The project is designed to help job seekers improve their resumes while preparin
 ### AI (Upcoming)
 - Google Gemini API
 
-### Frontend (Progress )
+### Frontend
 - React
 - Vite
 - Javascript
@@ -231,14 +232,25 @@ POST /analyze
     "suggestions": [
         "Your resume has a good ATS score, but adding more relevant keywords can improve it.",
         "Add these relevant skills if you have experience: Docker, Kubernetes"
-    ]
+    ],
+    "strengths": [
+    "Your Resume matches the job description with these skills: Python, Flask, Docker",
+    "Your resume demonstrates a strong range of technical skills",
+    "Your resume includes a professional email address",
+    "Your resume includes a contact number"
+    ],
+    "weaknesses": [
+    "Your resume is missing these relevant skills: Kubernetes, AWS",
+    "Your resume does not include a professional summary highlighting your key skills and experience"
+]
 }
 ```
 
+
+
+
+
 ---
-
-## Current Progress
-
 
 ## Current Progress
 
@@ -255,7 +267,7 @@ POST /analyze
 | 9    | Resume Analysis Dashboard               | ✅ Completed |
 | 10   | AI Resume Analysis Integration          | ✅ Completed |
 | 11   | ATS Score Breakdown                     | ✅ Completed |
-| 12   | Resume Strengths & Weaknesses           | ⏳ Upcoming  |
+| 12   | Resume Strengths & Weaknesses           | ✅ Completed |
 | 13   | Enhanced Resume Improvement Suggestions | ⏳ Upcoming  |
 | 14   | AI Interview Question Generator         | ⏳ Upcoming  |
 | 15   | AI Mock Interview                       | ⏳ Upcoming  |
@@ -269,7 +281,6 @@ POST /analyze
 
 ## Future Enhancements
 
-- Resume strengths and weaknesses analysis
 - Enhanced resume improvement recommendations
 - AI Interview Question Generator
 - AI-powered mock interview assistant

@@ -379,6 +379,100 @@ function ResumeDashboard() {
 
                     </div>
 
+                    <div className="dashboard-card strengths-card">
+
+    <div className="card-header">
+        <h3>Resume Strengths</h3>
+        <FiCheckCircle />
+    </div>
+
+    <ul>
+        {analysis?.strengths?.length > 0 ? (
+
+            analysis.strengths.map((strength, index) => (
+                <li key={index}>
+                    <FiCheckCircle />
+                    {strength}
+                </li>
+            ))
+
+        ) : analysis ? (
+
+            <li>
+                No major strengths identified.
+            </li>
+
+        ) : (
+
+            <>
+                <li>
+                    <FiCheckCircle />
+                    Strong technical skill coverage.
+                </li>
+
+                <li>
+                    <FiCheckCircle />
+                    Resume includes relevant practical experience.
+                </li>
+
+                <li>
+                    <FiCheckCircle />
+                    Resume contains important contact information.
+                </li>
+            </>
+
+        )}
+    </ul>
+
+</div>
+
+
+<div className="dashboard-card weaknesses-card">
+
+    <div className="card-header">
+        <h3>Resume Weaknesses</h3>
+        <FiAlertCircle />
+    </div>
+
+    <ul>
+        {analysis?.weaknesses?.length > 0 ? (
+
+            analysis.weaknesses.map((weakness, index) => (
+                <li key={index}>
+                    <FiAlertCircle />
+                    {weakness}
+                </li>
+            ))
+
+        ) : analysis ? (
+
+            <li>
+                No major weaknesses identified 🎉
+            </li>
+
+        ) : (
+
+            <>
+                <li>
+                    <FiAlertCircle />
+                    Some relevant job skills may be missing.
+                </li>
+
+                <li>
+                    <FiAlertCircle />
+                    Resume content can be further optimized for ATS.
+                </li>
+
+                <li>
+                    <FiAlertCircle />
+                    Add measurable achievements where possible.
+                </li>
+            </>
+
+        )}
+    </ul>
+
+</div>
                     <div className="dashboard-card full-width">
 
                         <div className="card-header">

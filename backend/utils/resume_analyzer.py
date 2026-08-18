@@ -69,6 +69,57 @@ def has_phone(text):
         )
     )
 
+def generate_strengths_weaknesses(resume_text, matched_skills, missing_skills, resume_skills):
+    strengths =[]
+    weaknesses = []
+
+    resume_text_lower = resume_text.lower()
+
+    # Strengths
+    if matched_skills:
+        strengths.append(
+            "Your Resume matches the job description with these skills: " + ", ".join(matched_skills)
+        )
+
+    if len(resume_skills) >= 5:
+        strengths.append("Your resume demonstrates a strong range of technical skills")
+
+    if has_email(resume_text):
+        strengths.append("Your resume includes a professional email address")
+
+    if has_phone(resume_text):
+        strengths.append("Your resume includes a contact number")   
+
+    if "summary" in resume_text_lower:
+        strengths.append("Your resume includes a professional summary highlighting your key skills and experience")
+
+    if "project" in resume_text_lower:
+        strengths.append("Your resume includes a projects section to showcase your practical experience")
+
+    if "experience" in resume_text_lower:
+        strengths.append("Your resume includes a work experience section, even if it contains internships or freelance work")
+
+    # Weaknesses
+    if missing_skills:
+        weaknesses.append("Your resume is missing these relevant skills: " + ", ".join(missing_skills))
+
+    if not has_email(resume_text):
+        weaknesses.append("Your resume does not include a professional email address")
+
+    if not has_phone(resume_text):
+        weaknesses.append("Your resume does not include a contact number")
+
+    if "summary" not in resume_text_lower:
+        weaknesses.append("Your resume does not include a professional summary highlighting your key skills and experience")
+
+    if "project" not in resume_text_lower:
+        weaknesses.append("Your resume does not include a projects section to showcase your practical experience")
+
+    if "experience" not in resume_text_lower:
+        weaknesses.append("Your resume does not include a work experience section, even if it contains internships or freelance work")
+
+    return strengths, weaknesses
+
 
 def analyze_resume(resume_text, job_description):
 
@@ -91,6 +142,12 @@ def analyze_resume(resume_text, job_description):
         for skill in job_skills
         if skill.lower() not in resume_skills_lower
     ]
+
+    # Stengths and weaknesses
+    strengths, weaknesses = generate_strengths_weaknesses(
+        resume_text, matched_skills, missing_skills, resume_skills
+    )
+    
 
     # Resume match percentage
     if len(job_skills) > 0:
@@ -187,5 +244,7 @@ def analyze_resume(resume_text, job_description):
         "matched_skills": matched_skills,
         "missing_skills": missing_skills,
         "resume_skills": resume_skills,
+        "strengths": strengths,
+        "weaknesses": weaknesses,
         "suggestions": suggestions
     }

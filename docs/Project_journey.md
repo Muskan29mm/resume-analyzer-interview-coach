@@ -344,6 +344,31 @@ Users can now understand how their ATS Score is calculated instead of seeing onl
 
 **Status:** ✅ Completed
 
+# Step 12 – Resume Strengths and Weaknesses
+
+## Objective
+
+Provide users with an overview of the key strengths and weaknesses identified in their uploaded resume, helping them understand what is working well and what areas could be improved.
+
+## Implementation
+
+- Added resume strength analysis to the backend.
+- Added resume weakness analysis to the backend.
+- Integrated strengths and weaknesses into the `/analyze` API response.
+- Connected the analysis results with the React dashboard.
+- Added a Strengths section to display positive aspects of the resume.
+- Added a Weaknesses section to highlight areas requiring improvement.
+- Displayed the results dynamically based on the uploaded resume and job description.
+- Updated dashboard styling to present strengths and weaknesses clearly.
+- Tested the feature with different resume analysis results.
+
+## Outcome
+
+Users can now see the major strengths and weaknesses of their resume alongside their ATS score and skill analysis. This gives users actionable insight into what they are doing well and which areas of their resume need improvement.
+
+
+**Status:** ✅ Completed
+
 # Current Progress
 
 | Step | Description | Status |
@@ -359,7 +384,7 @@ Users can now understand how their ATS Score is calculated instead of seeing onl
 | 9 | Resume Analysis Dashboard | ✅ Completed |
 | 10 | AI Resume Analysis Integration | ✅ Completed |
 | 11 | ATS Score Breakdown | ✅ Completed |
-| 12 | Resume Strengths & Weaknesses | ⏳ Upcoming |
+| 12 | Resume Strengths & Weaknesses | ✅ Completed |
 | 13 | Resume Improvement Suggestions Enhancement | ⏳ Upcoming |
 | 14 | Interview Question Generator | ⏳ Upcoming |
 | 15 | AI Mock Interview | ⏳ Upcoming |
@@ -401,7 +426,7 @@ Users can now understand how their ATS Score is calculated instead of seeing onl
 - Generated Resume Match scores dynamically.
 - Identified strengths based on matched skills.
 - Detected missing skills from the job description.
-- Generated AI-powered resume improvement suggestions.
+- Added dynamic resume improvement suggestions based on ATS score, missing skills, and resume sections.
 - Validated the complete end-to-end Resume Analyzer workflow.
 - Added backend debugging logs for upload and analysis requests.
 - Implemented rule-based resume skill extraction.
@@ -416,5 +441,6 @@ Users can now understand how their ATS Score is calculated instead of seeing onl
 - Added visual progress bars for ATS scoring components.
 - Tested the Resume Analyzer with multiple resumes and job descriptions.
 - Validated the complete Resume Upload → Resume Parsing → Job Description → Analysis → Dashboard workflow.
+- Added Resume Strengths and Weaknesses Section.
 ---
 

@@ -19,9 +19,12 @@ def home():
 
 @app.route('/upload', methods=['POST'])
 def upload_resume():
+    print("Files received:", request.files)
+    print("Form data received:", request.form)
+
     if "resume" not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
-    
+
     file = request.files["resume"]
     print(f"Uploaded File: {file.filename}")
 
