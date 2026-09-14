@@ -1,84 +1,197 @@
 import os
-from flask import Flask, request, jsonify
+
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-from utils.resume_parser import extract_resume_text
+from werkzeug.utils import secure_filename
+
+from utils.interview_generator import (
+    evaluate_interview_answer,
+    generate_interview_questions,
+)
 from utils.resume_analyzer import analyze_resume
+from utils.resume_parser import extract_resume_text
+
 
 app = Flask(__name__)
 CORS(app)
 
-UPLOAD_FOLDER = 'uploads'
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 
-@app.route('/')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024  # 10 MB
+
+ALLOWED_EXTENSIONS = {".pdf", ".docx"}
+
+
+@app.route("/")
 def home():
-    return "Resume Parser API is running."
+    return "Resume Analyzer & AI Interview Coach API is running."
 
 
-@app.route('/upload', methods=['POST'])
+@app.route("/upload", methods=["POST"])
 def upload_resume():
-    print("Files received:", request.files)
-    print("Form data received:", request.form)
-
     if "resume" not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
 
     file = request.files["resume"]
-    print(f"Uploaded File: {file.filename}")
 
-    if file.filename == "":
+    if not file or not file.filename:
         return jsonify({"error": "No file selected"}), 400
 
-    allowed_extensions = ['.pdf', '.docx']
-    file_extension = os.path.splitext(file.filename)[1].lower()
+    filename = secure_filename(file.filename)
+    file_extension = os.path.splitext(filename)[1].lower()
 
-    if file_extension not in allowed_extensions:
-        return jsonify({"error": "Unsupported file format. Please upload a PDF or DOCX file."}), 400
+    if file_extension not in ALLOWED_EXTENSIONS:
+        return jsonify({
+            "error": "Unsupported file format. Please upload a PDF or DOCX file."
+        }), 400
 
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-    file.save(file_path)
+    if not filename:
+        return jsonify({"error": "Invalid file name"}), 400
+
+    file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
 
     try:
-        text = extract_resume_text(file_path)
+        file.save(file_path)
 
-        return jsonify({"resume_text": text, "filename": file.filename}), 200
+        resume_text = extract_resume_text(file_path)
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({
+            "resume_text": resume_text,
+            "filename": filename,
+        }), 200
 
-@app.route('/analyze', methods=['POST'])
+    except Exception as exc:
+        return jsonify({
+            "error": f"Failed to process resume: {str(exc)}"
+        }), 500
+
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+
+
+@app.route("/analyze", methods=["POST"])
 def analyze_resume_route():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
-    resume_text = data.get("resume_text", "")
-    job_description = data.get("job_description", "")
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
 
-    print(f"Resume Length: {len(resume_text)}")
-    print(f"Job Description Length: {len(job_description)}")
+    resume_text = data.get("resume_text", "").strip()
+    job_description = data.get("job_description", "").strip()
 
     if not resume_text:
-        return jsonify({
-            "error": "Resume text is required"
-        }), 400
+        return jsonify({"error": "Resume text is required"}), 400
 
     if not job_description:
+        return jsonify({"error": "Job description is required"}), 400
+
+    try:
+        analysis = analyze_resume(
+            resume_text,
+            job_description,
+        )
+
+        return jsonify(analysis), 200
+
+    except Exception as exc:
         return jsonify({
-            "error": "Job description is required"
+            "error": f"Resume analysis failed: {str(exc)}"
+        }), 500
+
+
+@app.route("/generate-interview", methods=["POST"])
+def generate_interview():
+    data = request.get_json(silent=True)
+
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    resume_text = data.get("resume_text", "").strip()
+    job_description = data.get("job_description", "").strip()
+    number_of_questions = data.get("number_of_questions", 10)
+    question_type = data.get("question_type", "Mixed")
+    difficulty = data.get("difficulty", "Medium")
+
+    if not resume_text:
+        return jsonify({"error": "Resume text is required"}), 400
+
+    if not job_description:
+        return jsonify({"error": "Job description is required"}), 400
+
+    try:
+        number_of_questions = int(number_of_questions)
+
+        if not 1 <= number_of_questions <= 20:
+            return jsonify({
+                "error": "Number of questions must be between 1 and 20."
+            }), 400
+
+    except (TypeError, ValueError):
+        return jsonify({
+            "error": "Number of questions must be a valid integer."
         }), 400
 
-    analysis = analyze_resume(
-        resume_text,
-        job_description
-    )
+    try:
+        interview_questions = generate_interview_questions(
+            resume_text,
+            job_description,
+            question_type,
+            difficulty,
+            number_of_questions,
+        )
 
-    print("Analysis Completed Successfully")
-    print(analysis)
+        return jsonify(interview_questions), 200
 
-    return jsonify(analysis), 200
+    except Exception as exc:
+        return jsonify({
+            "error": f"Interview question generation failed: {str(exc)}"
+        }), 500
 
 
-if __name__ == '__main__':
+@app.route("/evaluate-answer", methods=["POST"])
+def evaluate_answer():
+    data = request.get_json(silent=True)
+
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    resume_text = data.get("resume_text", "").strip()
+    job_description = data.get("job_description", "").strip()
+    question = data.get("question", "").strip()
+    answer = data.get("answer", "").strip()
+
+    if not resume_text:
+        return jsonify({"error": "Resume text is required"}), 400
+
+    if not job_description:
+        return jsonify({"error": "Job description is required"}), 400
+
+    if not question:
+        return jsonify({"error": "Interview question is required"}), 400
+
+    if not answer:
+        return jsonify({"error": "Answer is required"}), 400
+
+    try:
+        evaluation = evaluate_interview_answer(
+            resume_text,
+            job_description,
+            question,
+            answer,
+        )
+
+        return jsonify(evaluation), 200
+
+    except Exception as exc:
+        return jsonify({
+            "error": f"Interview answer evaluation failed: {str(exc)}"
+        }), 500
+
+
+if __name__ == "__main__":
     app.run(debug=True)
-

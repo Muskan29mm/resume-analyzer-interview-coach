@@ -1,0 +1,323 @@
+/* =========================================
+   AI INTERVIEW QUESTION GENERATOR
+   ========================================= */
+
+.interview-generator-card {
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.interview-generator-header {
+    margin-bottom: 28px;
+}
+
+.interview-generator-header h2 {
+    margin: 0 0 10px;
+    color: var(--text-primary);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.interview-generator-header p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   INTERVIEW SETTINGS
+   ========================================= */
+
+.interview-generator-settings {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.interview-generator-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.interview-generator-field label {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.interview-generator-field select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.interview-generator-field select:hover,
+.interview-generator-field select:focus {
+    border-color: var(--primary-color);
+}
+
+.interview-generator-field select:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+/* =========================================
+   GENERATE BUTTON
+   ========================================= */
+
+.generate-interview-button {
+    border: none;
+    padding: 13px 26px;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.generate-interview-button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.generate-interview-button:active {
+    transform: translateY(0);
+}
+
+.generate-interview-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================
+   GENERATED QUESTIONS
+   ========================================= */
+
+.generated-interview-questions {
+    margin-top: 35px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-color);
+}
+
+.generated-interview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.generated-interview-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.generated-interview-count {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   QUESTIONS LIST
+   ========================================= */
+
+.interview-questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.interview-question-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--bg-secondary);
+    transition: var(--transition);
+}
+
+.interview-question-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-light);
+    box-shadow: var(--box-shadow);
+}
+
+
+/* =========================================
+   QUESTION NUMBER
+   ========================================= */
+
+.interview-question-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   QUESTION CONTENT
+   ========================================= */
+
+.interview-question-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.interview-question-content h4 {
+    margin: 0 0 12px;
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   QUESTION META
+   ========================================= */
+
+.interview-question-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.interview-question-meta span {
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   LOADING
+   ========================================= */
+
+.interview-generator-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.interview-generator-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: interviewSpinner 0.8s linear infinite;
+}
+
+@keyframes interviewSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.interview-generator-empty {
+    margin-top: 25px;
+    padding: 30px;
+    text-align: center;
+    border: 1px dashed var(--border-color);
+    border-radius: 14px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+    .interview-generator-card {
+        margin-top: 30px;
+        padding: 22px;
+    }
+
+    .interview-generator-header h2 {
+        font-size: 22px;
+    }
+
+    .interview-generator-settings {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .generate-interview-button {
+        width: 100%;
+    }
+
+    .generated-interview-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .interview-question-card {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .interview-question-number {
+        min-width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .interview-question-content h4 {
+        font-size: 15px;
+    }
+}

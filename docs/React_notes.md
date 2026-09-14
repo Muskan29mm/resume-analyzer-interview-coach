@@ -14,6 +14,18 @@ React is a JavaScript library used to build interactive and reusable user interf
 * To create reusable UI components.
 * To make applications easier to maintain.
 
+* React creates a VIRTUAL DOM in memory.
+
+* Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.
+
+* you need to set up a React Environment, and choose a build tool.
+* You also need node.js
+* When you have Node.js installed, you can start creating a React application by choosing a build tool.
+* Vite is a build tool, To use we need to install vite
+
+### Create a React Application
+Run this command to create a React application named my-react-app:
+npm create vite@latest my-react-app -- --template react
 
 ## 2. What is Vite?
 
@@ -27,6 +39,10 @@ Vite is a build tool that helps create and run React applications quickly.
 * Hot Reload.
 * Easy project setup.
 
+### To install Vite
+Run this command to install Vite:
+
+npm install -g create-vite
 
 ## 3. Component
 
@@ -57,7 +73,7 @@ To divide the application into reusable parts.
 
 ### Definition
 
-JSX allows us to write HTML-like syntax inside JavaScript. 
+JSX allows us to write HTML-like syntax inside JavaScript.
 JSX looks like HTML, but it is actually JavaScript syntax used by React.
 
 ### Example
@@ -80,7 +96,7 @@ Hot Module Replacement updates the browser automatically when we save changes.
 
 No need to refresh the browser manually.
 
-### 6. Import 
+### 6. Import
 
 import Header from "./components/Header";
 

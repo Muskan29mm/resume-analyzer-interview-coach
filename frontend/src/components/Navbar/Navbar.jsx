@@ -1,8 +1,13 @@
 import "./Navbar.css";
 import { HiDocumentText } from "react-icons/hi2";
 
-
 function Navbar() {
+    const scrollToDashboard = () => {
+        document
+            .getElementById("resume-dashboard")
+            ?.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <header className="navbar">
             <div className="container navbar-container">
@@ -16,27 +21,30 @@ function Navbar() {
 
                 <nav>
                     <ul className="nav-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#howitworks">How It Works</a></li>
-                        <li><a href="#interviewcoach">AI Interview Coach</a></li>
-                        <li><a href="#resume-dashboard">Resume Dashboard</a></li>
+                        <li>
+                            <a href="#home">Home</a>
+                        </li>
+                        <li>
+                            <a href="#features">Features</a>
+                        </li>
+                        <li>
+                            <a href="#howitworks">How It Works</a>
+                        </li>
+                        <li>
+                            <a href="#interviewcoach">AI Interview Coach</a>
+                        </li>
+                        <li>
+                            <a href="#resume-dashboard">Resume Dashboard</a>
+                        </li>
                     </ul>
                 </nav>
 
-                {/* <button className="nav-btn">
-                    Analyze Resume
-                </button> */}
                 <button
-    className="nav-btn"
-    onClick={() => {
-        document
-            .getElementById("resume-dashboard")
-            .scrollIntoView({ behavior: "smooth" });
-    }}
->
-    Analyze Resume
-</button>
+                    className="nav-btn"
+                    onClick={scrollToDashboard}
+                >
+                    Analyze Resume
+                </button>
 
             </div>
         </header>

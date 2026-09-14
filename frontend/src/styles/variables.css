@@ -1,22 +1,19 @@
-/* ===========================
-   Colors
-=========================== */
-
 :root {
-    /* Navbar */
+    /* Layout */
     --navbar-height: 70px;
 
     /* Backgrounds */
     --bg-primary: #0f172a;
     --bg-secondary: #1e293b;
     --bg-tertiary: #334155;
+    --bg-card: #172033;
 
     /* Text */
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
     --text-muted: #94a3b8;
 
-    /* Primary */
+    /* Brand */
     --primary-color: #3b82f6;
     --primary-hover: #2563eb;
 
@@ -25,15 +22,18 @@
     --warning: #f59e0b;
     --danger: #ef4444;
 
-    /* Border */
+    /* Borders */
     --border-color: #334155;
+    --border-light: #475569;
 
-    /* Shadow */
+    /* Effects */
     --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    --box-shadow-hover: 0 18px 45px rgba(0, 0, 0, 0.3);
 
-    /* Border Radius */
+    /* Shape */
     --border-radius: 12px;
+    --border-radius-lg: 20px;
 
-    /* Transition */
+    /* Animation */
     --transition: all 0.3s ease;
 }

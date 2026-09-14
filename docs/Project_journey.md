@@ -385,7 +385,7 @@ Users can now see the major strengths and weaknesses of their resume alongside t
 | 10 | AI Resume Analysis Integration | ✅ Completed |
 | 11 | ATS Score Breakdown | ✅ Completed |
 | 12 | Resume Strengths & Weaknesses | ✅ Completed |
-| 13 | Resume Improvement Suggestions Enhancement | ⏳ Upcoming |
+| 13 | Resume Improvement Suggestions Enhancement | ✅ Completed |
 | 14 | Interview Question Generator | ⏳ Upcoming |
 | 15 | AI Mock Interview | ⏳ Upcoming |
 | 16 | Interview Feedback & Scoring | ⏳ Upcoming |
@@ -442,5 +442,7 @@ Users can now see the major strengths and weaknesses of their resume alongside t
 - Tested the Resume Analyzer with multiple resumes and job descriptions.
 - Validated the complete Resume Upload → Resume Parsing → Job Description → Analysis → Dashboard workflow.
 - Added Resume Strengths and Weaknesses Section.
+- Added AI Resume Improvemnt suggestion.
+
 ---
 

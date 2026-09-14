@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./ResumeDashboard.css";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import AIInterviewQuestionGenerator from "../AIInterviewQuestionGenerator/AIInterviewQuestionGenerator";
+import InterviewCoach from "../InterviewCoach/InterviewCoach";
 import {
     FiCheckCircle,
     FiTrendingUp,
@@ -17,6 +19,7 @@ function ResumeDashboard() {
     const [error, setError] = useState("");
     const [analysis, setAnalysis] = useState(null);
     const [analyzing, setAnalyzing] = useState(false);
+    const [interviewQuestions, setInterviewQuestions] = useState([]);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -36,6 +39,8 @@ function ResumeDashboard() {
 
         setSelectedFile(file);
         setError("");
+        setAnalysis(null);
+        setInterviewQuestions([]);
     };
 
     const handleUpload = async () => {
@@ -52,7 +57,7 @@ function ResumeDashboard() {
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:5000/upload", //flask backend endpoint defined in app.py file under backend folder
+                "http://127.0.0.1:5000/upload",
                 {
                     method: "POST",
                     body: formData
@@ -67,10 +72,10 @@ function ResumeDashboard() {
 
             setResumeText(data.resume_text);
             setAnalysis(null);
+            setInterviewQuestions([]);
 
         } catch (error) {
             setError(error.message);
-
         } finally {
             setUploading(false);
         }
@@ -83,6 +88,8 @@ function ResumeDashboard() {
 
         setAnalyzing(true);
         setError("");
+        setAnalysis(null);
+        setInterviewQuestions([]);
 
         try {
             const response = await fetch(
@@ -109,10 +116,29 @@ function ResumeDashboard() {
 
         } catch (error) {
             setError(error.message);
-
         } finally {
             setAnalyzing(false);
         }
+    };
+
+    const getAtsLabel = (score) => {
+        if (score >= 85) return "Excellent";
+        if (score >= 70) return "Good";
+        if (score >= 50) return "Average";
+        return "Poor";
+    };
+
+    const getAtsDescription = (score) => {
+        if (score >= 85) return "Excellent ATS Compatibility";
+        if (score >= 70) return "Good ATS Compatibility";
+        if (score >= 50) return "Average ATS Compatibility";
+        return "Low ATS Compatibility";
+    };
+
+    const getMatchLabel = (score) => {
+        if (score >= 80) return "High Compatibility";
+        if (score >= 50) return "Moderate Compatibility";
+        return "Low Compatibility";
     };
 
     return (
@@ -156,7 +182,7 @@ function ResumeDashboard() {
                         onClick={handleUpload}
                         disabled={uploading}
                     >
-                        {uploading ? "Analyzing..." : "Upload Resume"}
+                        {uploading ? "Uploading..." : "Upload Resume"}
                     </button>
 
                     {error && (
@@ -181,10 +207,11 @@ function ResumeDashboard() {
                     </div>
                 )}
 
-                {/*Job Description */}
+                {/* Job Description */}
 
                 {resumeText && (
                     <div className="job-description-card">
+
                         <h3>Paste Job Description</h3>
 
                         <p>
@@ -195,7 +222,8 @@ function ResumeDashboard() {
                             value={jobDescription}
                             onChange={(event) => setJobDescription(event.target.value)}
                             placeholder="Paste the job description here..."
-                            rows="10" />
+                            rows="10"
+                        />
 
                         <button
                             className="analyze-button"
@@ -207,9 +235,12 @@ function ResumeDashboard() {
 
                     </div>
                 )}
-                {/* Dashboard Preview */}
+
+                {/* Dashboard */}
 
                 <div className="dashboard-preview">
+
+                    {/* ATS Score */}
 
                     <div className="dashboard-card ats-card">
 
@@ -221,19 +252,13 @@ function ResumeDashboard() {
                         <div className="score-row">
 
                             <h2>
-                                {analysis ? `${analysis.ats_score}%` : "89%"}
+                                {analysis ? `${analysis.ats_score}%` : "--"}
                             </h2>
 
                             <span className="score-badge">
                                 {analysis
-                                    ? analysis.ats_score >= 85
-                                        ? "Excellent"
-                                        : analysis.ats_score >= 70
-                                            ? "Good"
-                                            : analysis.ats_score >= 50
-                                                ? "Average"
-                                                : "Poor"
-                                    : "Excellent"}
+                                    ? getAtsLabel(analysis.ats_score)
+                                    : "Not analyzed"}
                             </span>
 
                         </div>
@@ -242,80 +267,89 @@ function ResumeDashboard() {
                             <div
                                 className="progress-fill"
                                 style={{
-                                    width: `${analysis ? analysis.ats_score : 89}%`
+                                    width: `${analysis ? analysis.ats_score : 0}%`
                                 }}
-                            ></div>
+                            />
                         </div>
 
                         <p>
                             {analysis
-                                ? analysis.ats_score >= 85
-                                    ? "Excellent ATS Compatibility"
-                                    : analysis.ats_score >= 70
-                                        ? "Good ATS Compatibility"
-                                        : analysis.ats_score >= 50
-                                            ? "Average ATS Compatibility"
-                                            : "Low ATS Compatibility"
-                                : "Excellent ATS Compatibility"}
+                                ? getAtsDescription(analysis.ats_score)
+                                : "Upload your resume and analyze it against a job description to see your ATS score."}
                         </p>
 
                         {analysis?.ats_breakdown && (
-    <div className="ats-breakdown">
-        <h4>ATS Score Breakdown</h4>
+                            <div className="ats-breakdown">
 
-        <div className="breakdown-item">
-            <div className="breakdown-header">
-                <span>Skill Match</span>
-                <span>{analysis.ats_breakdown.skill_match_score} / 70</span>
-            </div>
+                                <h4>ATS Score Breakdown</h4>
 
-            <div className="breakdown-bar">
-                <div
-                    className="breakdown-fill"
-                    style={{
-                        width: `${(analysis.ats_breakdown.skill_match_score / 70) * 100}%`
-                    }}
-                ></div>
-            </div>
-        </div>
+                                <div className="breakdown-item">
 
-        <div className="breakdown-item">
-            <div className="breakdown-header">
-                <span>Email</span>
-                <span>{analysis.ats_breakdown.email_score} / 15</span>
-            </div>
+                                    <div className="breakdown-header">
+                                        <span>Skill Match</span>
+                                        <span>
+                                            {analysis.ats_breakdown.skill_match_score} / 70
+                                        </span>
+                                    </div>
 
-            <div className="breakdown-bar">
-                <div
-                    className="breakdown-fill"
-                    style={{
-                        width: `${(analysis.ats_breakdown.email_score / 15) * 100}%`
-                    }}
-                ></div>
-            </div>
-        </div>
+                                    <div className="breakdown-bar">
+                                        <div
+                                            className="breakdown-fill"
+                                            style={{
+                                                width: `${(analysis.ats_breakdown.skill_match_score / 70) * 100}%`
+                                            }}
+                                        />
+                                    </div>
 
-        <div className="breakdown-item">
-            <div className="breakdown-header">
-                <span>Phone</span>
-                <span>{analysis.ats_breakdown.phone_score} / 15</span>
-            </div>
+                                </div>
 
-            <div className="breakdown-bar">
-                <div
-                    className="breakdown-fill"
-                    style={{
-                        width: `${(analysis.ats_breakdown.phone_score / 15) * 100}%`
-                    }}
-                ></div>
-            </div>
-        </div>
-    </div>
-)}
+                                <div className="breakdown-item">
+
+                                    <div className="breakdown-header">
+                                        <span>Email</span>
+                                        <span>
+                                            {analysis.ats_breakdown.email_score} / 15
+                                        </span>
+                                    </div>
+
+                                    <div className="breakdown-bar">
+                                        <div
+                                            className="breakdown-fill"
+                                            style={{
+                                                width: `${(analysis.ats_breakdown.email_score / 15) * 100}%`
+                                            }}
+                                        />
+                                    </div>
+
+                                </div>
+
+                                <div className="breakdown-item">
+
+                                    <div className="breakdown-header">
+                                        <span>Phone</span>
+                                        <span>
+                                            {analysis.ats_breakdown.phone_score} / 15
+                                        </span>
+                                    </div>
+
+                                    <div className="breakdown-bar">
+                                        <div
+                                            className="breakdown-fill"
+                                            style={{
+                                                width: `${(analysis.ats_breakdown.phone_score / 15) * 100}%`
+                                            }}
+                                        />
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        )}
 
                     </div>
 
 
+                    {/* Resume Match */}
 
                     <div className="dashboard-card">
 
@@ -325,25 +359,26 @@ function ResumeDashboard() {
                         </div>
 
                         <h2>
-                            {analysis ? analysis.resume_match : 92}%
+                            {analysis ? `${analysis.resume_match}%` : "--"}
                         </h2>
 
                         <h4>
                             {analysis
-                                ? analysis.resume_match >= 80
-                                    ? "High Compatibility"
-                                    : analysis.resume_match >= 50
-                                        ? "Moderate Compatibility"
-                                        : "Low Compatibility"
-                                : "High Compatibility"
-                            }
+                                ? getMatchLabel(analysis.resume_match)
+                                : "Not analyzed"}
                         </h4>
 
                         <p>
-                            Your resume aligns well with the target job requirements.
+                            {analysis
+                                ? "Your resume match is based on the skills identified in the resume and the target job description."
+                                : "Analyze your resume against a job description to see how well your skills match the target role."}
                         </p>
 
                     </div>
+
+
+                    {/* Missing Skills */}
+
                     <div className="dashboard-card missing-skills">
 
                         <div className="card-header">
@@ -363,15 +398,15 @@ function ResumeDashboard() {
 
                             ) : analysis ? (
 
-                                <li>No missing skills found 🎉</li>
+                                <li>
+                                    No missing skills found 🎉
+                                </li>
 
                             ) : (
 
-                                <>
-                                    <li>Docker</li>
-                                    <li>Kubernetes</li>
-                                    <li>AWS</li>
-                                </>
+                                <li>
+                                    Analyze your resume to identify missing skills.
+                                </li>
 
                             )}
 
@@ -379,100 +414,87 @@ function ResumeDashboard() {
 
                     </div>
 
+
+                    {/* Resume Strengths */}
+
                     <div className="dashboard-card strengths-card">
 
-    <div className="card-header">
-        <h3>Resume Strengths</h3>
-        <FiCheckCircle />
-    </div>
+                        <div className="card-header">
+                            <h3>Resume Strengths</h3>
+                            <FiCheckCircle />
+                        </div>
 
-    <ul>
-        {analysis?.strengths?.length > 0 ? (
+                        <ul>
 
-            analysis.strengths.map((strength, index) => (
-                <li key={index}>
-                    <FiCheckCircle />
-                    {strength}
-                </li>
-            ))
+                            {analysis?.strengths?.length > 0 ? (
 
-        ) : analysis ? (
+                                analysis.strengths.map((strength, index) => (
+                                    <li key={index}>
+                                        <FiCheckCircle />
+                                        {strength}
+                                    </li>
+                                ))
 
-            <li>
-                No major strengths identified.
-            </li>
+                            ) : analysis ? (
 
-        ) : (
+                                <li>
+                                    No major strengths identified.
+                                </li>
 
-            <>
-                <li>
-                    <FiCheckCircle />
-                    Strong technical skill coverage.
-                </li>
+                            ) : (
 
-                <li>
-                    <FiCheckCircle />
-                    Resume includes relevant practical experience.
-                </li>
+                                <li>
+                                    Analyze your resume to see its strengths.
+                                </li>
 
-                <li>
-                    <FiCheckCircle />
-                    Resume contains important contact information.
-                </li>
-            </>
+                            )}
 
-        )}
-    </ul>
+                        </ul>
 
-</div>
+                    </div>
 
 
-<div className="dashboard-card weaknesses-card">
+                    {/* Resume Weaknesses */}
 
-    <div className="card-header">
-        <h3>Resume Weaknesses</h3>
-        <FiAlertCircle />
-    </div>
+                    <div className="dashboard-card weaknesses-card">
 
-    <ul>
-        {analysis?.weaknesses?.length > 0 ? (
+                        <div className="card-header">
+                            <h3>Resume Weaknesses</h3>
+                            <FiAlertCircle />
+                        </div>
 
-            analysis.weaknesses.map((weakness, index) => (
-                <li key={index}>
-                    <FiAlertCircle />
-                    {weakness}
-                </li>
-            ))
+                        <ul>
 
-        ) : analysis ? (
+                            {analysis?.weaknesses?.length > 0 ? (
 
-            <li>
-                No major weaknesses identified 🎉
-            </li>
+                                analysis.weaknesses.map((weakness, index) => (
+                                    <li key={index}>
+                                        <FiAlertCircle />
+                                        {weakness}
+                                    </li>
+                                ))
 
-        ) : (
+                            ) : analysis ? (
 
-            <>
-                <li>
-                    <FiAlertCircle />
-                    Some relevant job skills may be missing.
-                </li>
+                                <li>
+                                    No major weaknesses identified 🎉
+                                </li>
 
-                <li>
-                    <FiAlertCircle />
-                    Resume content can be further optimized for ATS.
-                </li>
+                            ) : (
 
-                <li>
-                    <FiAlertCircle />
-                    Add measurable achievements where possible.
-                </li>
-            </>
+                                <li>
+                                    Analyze your resume to identify areas for improvement.
+                                </li>
 
-        )}
-    </ul>
+                            )}
 
-</div>
+                        </ul>
+
+                    </div>
+
+
+                    {/* AI Suggestions */}
+
                     <div className="dashboard-card full-width">
 
                         <div className="card-header">
@@ -487,12 +509,10 @@ function ResumeDashboard() {
                                 analysis.suggestions?.length > 0 ? (
 
                                     analysis.suggestions.map((suggestion, index) => (
-
                                         <li key={index}>
                                             <FiCheckCircle />
                                             {suggestion}
                                         </li>
-
                                     ))
 
                                 ) : (
@@ -506,22 +526,9 @@ function ResumeDashboard() {
 
                             ) : (
 
-                                <>
-                                    <li>
-                                        <FiCheckCircle />
-                                        Quantify project achievements with numbers.
-                                    </li>
-
-                                    <li>
-                                        <FiCheckCircle />
-                                        Add measurable business impact wherever possible.
-                                    </li>
-
-                                    <li>
-                                        <FiCheckCircle />
-                                        Strengthen the professional summary with relevant keywords.
-                                    </li>
-                                </>
+                                <li>
+                                    Analyze your resume to receive personalized suggestions.
+                                </li>
 
                             )}
 
@@ -530,6 +537,26 @@ function ResumeDashboard() {
                     </div>
 
 
+                    {/* AI Interview Question Generator */}
+
+                    {resumeText && jobDescription.trim() && (
+                        <AIInterviewQuestionGenerator
+                            resumeText={resumeText}
+                            jobDescription={jobDescription}
+                            onQuestionsGenerated={setInterviewQuestions}
+                        />
+                    )}
+
+
+                    {/* AI Interview Coach */}
+
+                    {interviewQuestions.length > 0 && (
+                        <div id="interviewcoach">
+                            <InterviewCoach
+                                questions={interviewQuestions}
+                            />
+                        </div>
+                    )}
 
                 </div>
 
