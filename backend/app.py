@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 from utils.interview_generator import (
     evaluate_interview_answer,
     generate_interview_questions,
+    generate_overall_interview_review
 )
 from utils.resume_analyzer import analyze_resume
 from utils.resume_parser import extract_resume_text
@@ -192,6 +193,39 @@ def evaluate_answer():
             "error": f"Interview answer evaluation failed: {str(exc)}"
         }), 500
 
+@app.route("/overall-review", methods=["POST"])
+def overall_review():
+    data = request.get_json(silent=True)
 
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    resume_text = data.get("resume_text", "").strip()
+    job_description = data.get("job_description", "").strip()
+    interview_data = data.get("interview_data", [])
+
+    if not resume_text:
+        return jsonify({"error": "Resume text is required"}), 400
+
+    if not job_description:
+        return jsonify({"error": "Job description is required"}), 400
+
+    if not isinstance(interview_data, list) or not interview_data:
+        return jsonify({"error": "Interview data is required"}), 400
+
+    try:
+        review = generate_overall_interview_review(
+            resume_text,
+            job_description,
+            interview_data,
+        )
+
+        return jsonify(review), 200
+
+    except Exception as exc:
+        return jsonify({
+            "error": f"Overall interview review generation failed: {str(exc)}"
+        }), 500
+    
 if __name__ == "__main__":
     app.run(debug=True)

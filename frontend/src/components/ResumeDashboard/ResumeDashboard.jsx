@@ -553,7 +553,9 @@ function ResumeDashboard() {
                     {interviewQuestions.length > 0 && (
                         <div id="interviewcoach">
                             <InterviewCoach
-                                questions={interviewQuestions}
+                            resumeText={resumeText}
+                            jobDescription={jobDescription}
+                            questions={interviewQuestions}
                             />
                         </div>
                     )}
