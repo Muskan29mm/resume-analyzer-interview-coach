@@ -32,14 +32,58 @@ The project is designed to help job seekers improve their resumes while preparin
 - Responsive Resume Dashboard
 - Reusable React component architecture
 - Modular CSS architecture
+- AI-powered interview question generation
+- Generate questions based on resume and job description
+- Select interview question type:
+    Mixed
+    Technical
+    Behavioral
+    Situational
+    Project-Based
+    HR
+- Select interview difficulty:
+    Easy
+    Medium
+    Hard
+- Select number of questions:
+    5
+    10
+    15
+    20
+- Interactive question-by-question mock interview
+- Answer submission interface
+- AI-powered answer evaluation
+- Individual answer score out of 10
+- AI-generated answer feedback
+- Answer strengths
+- Areas for improvement
+- Interview progress tracking
+- Final interview completion flow
+- Overall interview performance score
+- Category-based interview scoring
+- Overall interview summary
+- Overall strengths
+- Areas for improvement
+- Personalized interview recommendations
+
+### Application
+REST APIs built using Flask
+Cross-Origin Resource Sharing (CORS) support
+React + Vite frontend
+Responsive Resume Dashboard
+Reusable React component architecture
+Modular CSS architecture
+Gemini API integration
+Error handling for temporary Gemini API availability issues
 
 ### 🚧 Planned Features
 
-- AI Interview Question Generator
-- Resume history
-- Download analysis report (PDF)
+- Resume analysis history
+- Save interview results
 - User authentication
-- Mock interview assistant
+- Download analysis report as PDF
+- Persistent user profiles
+- Interview history and performance tracking
 
 ---
 
@@ -56,6 +100,7 @@ The project is designed to help job seekers improve their resumes while preparin
 
 ### AI (Upcoming)
 - Google Gemini API
+- Gemini Flash Model
 
 ### Frontend
 - React
@@ -79,6 +124,7 @@ resume-analyzer-interview-coach/
 │   └── utils/
 │       └── resume_parser.py
 |       └── resume_analyzer.py
+|       └── interview_generator.py
 │
 ├── frontend/
   └── src/
@@ -108,6 +154,15 @@ Clone the repository:
 ```bash
 git clone <repository-url>
 ```
+
+Create and activate a virtual environment:
+
+python -m venv .venv
+
+Linux/macOS:
+
+source .venv/bin/activate
+
 For backend 
 
 Navigate to the backend directory:
@@ -121,6 +176,10 @@ Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+Create a .env file inside the backend directory and add your Gemini API key:
+
+GEMINI_API_KEY=your_api_key_here
 
 Run the Flask application:
 
@@ -246,7 +305,162 @@ POST /analyze
 }
 ```
 
+### Generate Interview Questions
 
+**Endpoint**
+
+```
+POST /generate-interview
+```
+
+**Purpose**
+
+Generates personalized interview questions using the user's resume and target job description.
+
+**Request**
+
+{
+    "resume_text": "...",
+    "job_description": "...",
+    "question_type": "Mixed",
+    "difficulty": "Medium",
+    "num_questions": 10
+}
+
+**Supported Question Types**
+
+Mixed
+Technical
+Behavioral
+Situational
+Project-Based
+HR
+
+**Supported Difficulty Levels**
+
+Easy
+Medium
+Hard
+
+**Supported Question Counts**
+
+5
+10
+15
+20
+
+**Sample Response**
+
+{
+    "questions": [
+        {
+            "question": "Explain how you have used Python in your previous projects.",
+            "type": "Technical",
+            "difficulty": "Medium"
+        },
+        {
+            "question": "Describe a challenging problem you encountered and how you solved it.",
+            "type": "Behavioral",
+            "difficulty": "Medium"
+        }
+    ]
+}
+
+### Evaluate Interview Answer
+
+**Endpoint**
+
+POST /evaluate-answer
+
+**Purpose**
+
+Evaluates an individual interview answer using the resume, job description, interview question, and user's answer.
+
+**Request**
+
+{
+    "resume_text": "...",
+    "job_description": "...",
+    "question": "Explain how you have used Python in your projects.",
+    "answer": "I have used Python for data analysis and machine learning..."
+}
+
+**Sample Response**
+
+{
+    "score": 8,
+    "feedback": "The answer is relevant and demonstrates practical Python experience, but it could be strengthened with specific project examples and measurable results.",
+    "strengths": [
+        "Relevant to the interview question",
+        "Demonstrates practical Python experience"
+    ],
+    "improvements": [
+        "Provide a specific project example",
+        "Explain the impact of the work",
+        "Include measurable results where possible"
+    ]
+}
+
+### Generate Overall Interview Review
+
+**Endpoint**
+
+POST /overall-review
+
+**Purpose**
+
+Generates a final AI-powered assessment after the user completes the mock interview.
+
+**Request**
+
+{
+    "resume_text": "...",
+    "job_description": "...",
+    "interview_data": [
+        {
+            "question": "Explain how you have used Python.",
+            "type": "Technical",
+            "difficulty": "Medium",
+            "answer": "I have used Python for...",
+            "evaluation": {
+                "score": 8,
+                "feedback": "...",
+                "strengths": [
+                    "..."
+                ],
+                "improvements": [
+                    "..."
+                ]
+            }
+        }
+    ]
+}
+
+**Sample Response**
+
+{
+    "overall_score": 8,
+    "summary": "The candidate demonstrated good technical knowledge and communicated their experience clearly.",
+    "category_scores": {
+        "technical_knowledge": 8,
+        "answer_quality": 7,
+        "communication": 8,
+        "clarity": 8,
+        "depth_of_understanding": 7
+    },
+    "strengths": [
+        "Good understanding of technical concepts",
+        "Clear communication"
+    ],
+    "areas_for_improvement": [
+        "Provide more detailed project examples",
+        "Include measurable results"
+    ],
+    "recommendations": [
+        "Practice explaining projects using the STAR method",
+        "Prepare deeper examples for technical questions"
+    ]
+}
 
 
 
@@ -269,25 +483,29 @@ POST /analyze
 | 11   | ATS Score Breakdown                     | ✅ Completed |
 | 12   | Resume Strengths & Weaknesses           | ✅ Completed |
 | 13   | Enhanced Resume Improvement Suggestions | ✅ Completed |
-| 14   | AI Interview Question Generator         | ⏳ Upcoming  |
-| 15   | AI Mock Interview                       | ⏳ Upcoming  |
-| 16   | Interview Feedback & Scoring            | ⏳ Upcoming  |
-| 17   | Resume Analysis History                 | ⏳ Upcoming  |
-| 18   | User Authentication                     | ⏳ Upcoming  |
-| 19   | Download Analysis Report                | ⏳ Upcoming  |
+| 14   | AI Interview Question Generator         | ✅ Completed |
+| 15   | AI Mock Interview                       | ✅ Completed |
+| 16   | Interview Answer Evaluation & Feedback  | ✅ Completed |
+| 17   | Overall Interview Review                | ✅ Completed |
+| 18   | Resume Analysis History                 | ⏳ Upcoming  |
+| 19   | User Authentication                     | ⏳ Upcoming  |
+| 20   | Download Analysis Report                | ⏳ Upcoming  |
 
 
 ---
 
 ## Future Enhancements
 
-- AI Interview Question Generator
-- AI-powered mock interview assistant
-- Interview feedback and scoring
 - Resume analysis history
+- Save and retrieve previous interview sessions
+- Interview performance history
 - User authentication
-- Download analysis report as PDF
-- Google Gemini API integration
+- User profiles
+- Download resume analysis reports as PDF
+- Download interview performance reports
+- Persistent interview results
+- Advanced interview analytics
+- Improved AI evaluation and reliability
 
 ---
 
